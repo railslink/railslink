@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: railslink_development
+  host: localhost
+  pool: 5
+  username: railslink
+  password: railspgpw
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: railslink_test
+  host: localhost
+  pool: 5
+  username: railslink
+  password: railspgpw
