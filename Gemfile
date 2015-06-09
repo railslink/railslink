@@ -5,6 +5,7 @@ gem 'rails'
 gem 'puma'
 gem 'pg'
 gem 'rails_12factor'
+gem 'haml-rails'
 
 # assets
 gem 'jquery-rails'
