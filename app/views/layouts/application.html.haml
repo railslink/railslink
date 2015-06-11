@@ -7,12 +7,12 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-  %body
+  %body#home
     = yield
     %footer
       .container
         .links
-          %a{:href => "https://twitter.com/railslink", :target => "_new"}= 'Twitter'
-          %a{:href => "https://github.com/railslink/railslink", :target => "_new"}= 'GitHub'
+          %a{:href => "https://twitter.com/railslink", :target => "_new"}= fa_icon('twitter')
+          %a{:href => "https://github.com/railslink/railslink", :target => "_new"}= fa_icon('github')
         .copyright
           ©#{"#{Time.zone.now.year} Ruby on Rails Link"}

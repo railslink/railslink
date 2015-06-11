@@ -18,6 +18,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'compass-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'pry'
