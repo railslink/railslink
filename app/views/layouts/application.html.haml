@@ -6,5 +6,13 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body
     = yield
+    %footer
+      .container
+        .links
+          %a{:href => "https://twitter.com/railslink", :target => "_new"}= 'Twitter'
+          %a{:href => "https://github.com/railslink/railslink", :target => "_new"}= 'GitHub'
+        .copyright
+          ©#{"#{Time.zone.now.year} Ruby on Rails Link"}

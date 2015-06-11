@@ -17,6 +17,7 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'compass-rails'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'pry'
