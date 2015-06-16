@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/railslink/railslink/badges/gpa.svg)](https://codeclimate.com/github/railslink/railslink)
+
 # Ruby on Rails Link
 
 http://www.rubyonrails.link
