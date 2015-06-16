@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Ruby on Rails Link
+    %title= configatron.app_name
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -19,4 +19,4 @@
           %a{:href => "https://twitter.com/railslink", :target => "_new"}= fa_icon('twitter')
           %a{:href => "https://github.com/railslink/railslink", :target => "_new"}= fa_icon('github')
         .copyright
-          ©#{"#{Time.zone.now.year} Ruby on Rails Link"}
+          ©#{Time.zone.now.year} #{configatron.app_name}

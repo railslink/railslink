@@ -79,6 +79,7 @@ GEM
       compass (~> 1.0.0)
       sass-rails (<= 5.0.1)
       sprockets (< 2.13)
+    configatron (4.5.0)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.5.2)
@@ -215,6 +216,7 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails
   compass-rails
+  configatron
   font-awesome-rails
   google-analytics-turbolinks
   haml-rails
