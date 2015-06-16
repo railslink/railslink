@@ -6,6 +6,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %link{rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" }
+    %link{rel: "apple-touch-icon", href: "/apple-touch-icon.png" }
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
   %body#home
     = yield
