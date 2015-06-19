@@ -15,4 +15,5 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require google-analytics-turbolinks
 //= require_tree .

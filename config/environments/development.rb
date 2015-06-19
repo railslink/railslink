@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # Configatron values
+  configatron.ga.tracking_id = 'UA-64301219-2'
 end
