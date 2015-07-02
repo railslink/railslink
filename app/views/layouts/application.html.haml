@@ -32,6 +32,9 @@
     = yield
     %footer
       .container
+        %p
+          Have a question? Ask us on
+          =link_to 'Twitter', 'https://twitter.com/railslink', target: 'new'
         .links
           %a{href: "https://twitter.com/railslink", target: "_new"}= fa_icon('twitter')
           %a{href: "https://github.com/railslink/railslink", target: "_new"}= fa_icon('github')
