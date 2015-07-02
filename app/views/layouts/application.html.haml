@@ -1,18 +1,21 @@
 !!!
+- description = 'Ruby on Rails Slack community. We are 200+ Ruby on Rails developers from all over the world. Come join us and talk on Slack!'
+- title = "Rails Slack community - #{configatron.app_name}"
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title= configatron.app_name
+    %title
+      = title
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    %meta{content: "Global community of Ruby on Rails developers on Slack.", name: "description"}/
+    %meta{content: description, name: "description"}/
     %meta{property: "og:locale", content: "en_US"}/
-    %meta{property: "og:title", content: configatron.app_name}/
+    %meta{property: "og:title", content: title}/
     %meta{property: "og:url", content: "http://www.rubyonrails.link"}/
     %meta{property: "og:type", content: "website"}/
     %meta{property: "og:site_name", content: configatron.app_name}/
-    %meta{property: "og:description", content: "Global community of Ruby on Rails developers on Slack."}/
+    %meta{property: "og:description", content: description}/
     %meta{property: "og:image", content: asset_url('railslink-icon-200x200.png')}/
     %link{rel: "stylesheet", type: "text/css", href: "//fonts.googleapis.com/css?family=Cabin" }
     %link{rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" }
