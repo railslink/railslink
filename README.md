@@ -10,24 +10,38 @@ Official website of Ruby on Rails Link.
 ## Getting Started
 
 ### Dependencies
-Make sure you have installed bundler and PostgreSQL and created railslink user.
+Make sure you have installed bundler and PostgreSQL.
 
 ```
-# if you need to install postgresql on mac
+# if you need to install PostgreSQL on Mac with Homebrew
 
 brew install postgresql
 ```
 
 ### Setup
 
-Clone this repo and do the following:
+Clone this repo and configure database.
+
+If you already have a local PostgreSQL superuser, make .env file on project root and configure like this:
 
 ```
-cp config/database.example.yml config/database.yml
+PG_USER=mysuperuser
+PG_PASSWORD=mypassword
+```
+
+If you don't have a superuser yet, create railslink user, with password "railspgpw"
+
+```
+createuser -P -s -e railslink
+```
+
+Update these files with your local configuration
+
+```
 cp config/secrets.example.yml config/secrets.yml
 ```
 
-Update those files with your local configuration and then run:
+then run:
 
 ```
 bundle
