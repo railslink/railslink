@@ -1,4 +1,6 @@
-[![Code Climate](https://codeclimate.com/github/railslink/railslink/badges/gpa.svg)](https://codeclimate.com/github/railslink/railslink) [![Circle CI](https://circleci.com/gh/railslink/railslink.svg?style=svg)](https://circleci.com/gh/railslink/railslink)
+[![Code Climate](https://codeclimate.com/github/railslink/railslink/badges/gpa.svg)](https://codeclimate.com/github/railslink/railslink)
+[![Dependency Status](https://gemnasium.com/railslink/railslink.svg)](https://gemnasium.com/railslink/railslink)
+[![Circle CI](https://circleci.com/gh/railslink/railslink.svg?style=shield)](https://circleci.com/gh/railslink/railslink)
 
 # Ruby on Rails Link
 
