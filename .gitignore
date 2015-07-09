@@ -8,7 +8,6 @@
 
 
 # Ignore rails localized configs
-secrets.yml
 .env
 
 # https://github.com/github/gitignore/blob/master/Rails.gitignore

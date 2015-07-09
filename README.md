@@ -22,7 +22,7 @@ brew install postgresql
 
 Clone this repo and configure database.
 
-If you already have a local PostgreSQL superuser, make .env file on project root and configure like this:
+If you already have a local PostgreSQL superuser, make `.env` file on project root and configure like this:
 
 ```
 PG_USER=mysuperuser
@@ -35,13 +35,7 @@ If you don't have a superuser yet, create railslink user, with password "railspg
 createuser -P -s -e railslink
 ```
 
-Update these files with your local configuration
-
-```
-cp config/secrets.example.yml config/secrets.yml
-```
-
-then run:
+Then run:
 
 ```
 bundle
