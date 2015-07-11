@@ -17,7 +17,6 @@ gem 'sass'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
