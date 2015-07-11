@@ -21,6 +21,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-byebug'

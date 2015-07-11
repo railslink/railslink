@@ -64,6 +64,10 @@ GEM
     columnize (0.9.0)
     configatron (4.5.0)
     debug_inspector (0.0.2)
+    dotenv (2.0.2)
+    dotenv-rails (2.0.2)
+      dotenv (= 2.0.2)
+      railties (~> 4.0)
     erubis (2.7.0)
     execjs (2.5.2)
     font-awesome-rails (4.3.0.0)
@@ -190,6 +194,7 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails
   configatron
+  dotenv-rails
   font-awesome-rails
   google-analytics-turbolinks
   haml-rails
