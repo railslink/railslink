@@ -4,8 +4,8 @@ development:
   database: railslink_development
   host: localhost
   pool: 5
-  username: railslink
-  password: railspgpw
+  username: <%= ENV['PG_USER'] || 'railslink' %>
+  password: <%= ENV['PG_PASSWORD'] || 'railspgpw' %>
 
 test:
   adapter: postgresql
@@ -13,5 +13,5 @@ test:
   database: railslink_test
   host: localhost
   pool: 5
-  username: railslink
-  password: railspgpw
+  username: <%= ENV['PG_USER'] || 'railslink' %>
+  password: <%= ENV['PG_PASSWORD'] || 'railspgpw' %>
