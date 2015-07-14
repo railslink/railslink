@@ -5,7 +5,7 @@ gem 'rails'
 gem 'puma'
 gem 'pg'
 gem 'rails_12factor'
-gem 'slim'
+gem 'slim-rails'
 gem 'configatron'
 
 # assets
