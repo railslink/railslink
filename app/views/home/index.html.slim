@@ -1,0 +1,53 @@
+.container
+  section
+    =image_tag 'railslink-icon.png', size: '100x100'
+    h1 =configatron.app_name
+    p
+      | We are a community of Ruby on Rails developers from all over the world.
+      br
+      | Join us and talk on Slack!
+    div
+      =link_to 'Join Now', 'https://rubyonrails.typeform.com/to/g9CVKl', id: 'join-now', class: 'btn btn-danger btn-lg'
+    =link_to 'Already a member? Sign in here', 'https://rubyonrails-link.slack.com', class: 'btn btn-link'
+  section
+    h2 Who we are
+    p
+      | We are 200+ Ruby on Rails developers from all over the world,
+      | including avid OSS contributors, full-stack engineers, founders of startup,
+      | backend engineers at enterprise and students learning Ruby on Rails.
+    p
+      | 30% of members locate in North America, 30% in Europe,
+      | 20% in Asia, 10% in South America, 5% in Oceania, and 5% in Africa.
+  section#channels
+    h2 Channels
+    p We have channels like these in our Slack.
+    ul.list-unstyled.row
+      li.col-sm-4
+        h3 #introductions
+        | Introduction channel for new members
+      li.col-sm-4
+        h3 #general
+        | General discussion
+      li.col-sm-4
+        h3 #coding
+        | Ask coding question, talk about codes
+      li.col-sm-4
+        h3 #work
+        | For people looking for jobs or hires
+      li.col-sm-4
+        h3 #startup-projects
+        | Share your project built by Rails
+      li.col-sm-4
+        h3 #railslink-dev
+        | Developing this website as an open-source
+  section
+    h2 How to join
+    p
+      | It’s free to join.
+      br
+      | Please input some info about yourself from the form below.
+      br
+      | We'll send you an invitation to our Slack.
+    .typeform-widget data-url='https://rubyonrails.typeform.com/to/g9CVKl' data-text='Registration Form' style='width:100%;height:400px;' 
+    javascript:
+      (function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()
