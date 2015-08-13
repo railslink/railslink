@@ -29,7 +29,10 @@ If you already have a local PostgreSQL superuser, make `.env` file on project ro
 ```
 PG_USER=mysuperuser
 PG_PASSWORD=mypassword
+SLACK_API_TOKEN=your-slack-api-token
 ```
+
+You can get your Slack API token at https://api.slack.com/web#authentication
 
 If you don't have a superuser yet, create railslink user, with password "railspgpw"
 
