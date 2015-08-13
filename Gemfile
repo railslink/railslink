@@ -7,6 +7,7 @@ gem 'pg'
 gem 'rails_12factor'
 gem 'slim-rails'
 gem 'configatron'
+gem 'rest-client'
 
 # assets
 gem 'jquery-rails'
