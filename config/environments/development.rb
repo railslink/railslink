@@ -41,4 +41,8 @@ Rails.application.configure do
   
   # Configatron values
   configatron.ga.tracking_id = 'UA-64301219-2'
+  
+  # Disable pretty HTML mode because line-breaks added by pretty HTML
+  # make additional margins in development enviroment.
+  Slim::Engine.options[:pretty] = false
 end
