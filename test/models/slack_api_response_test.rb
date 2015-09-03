@@ -28,7 +28,6 @@ class SlackApiResponseTest < ActiveSupport::TestCase
       
       channels_list = SlackApiResponse.latest(method_name)
       assert channels_list.response['channels'].size > 0
-      puts channels_list.response['channels'].first
     end
     
   end
