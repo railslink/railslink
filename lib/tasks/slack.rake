@@ -7,13 +7,7 @@ namespace :slack do
     
     # Call Slack API and save the response even if it was failure.
     %w(users.list channels.list).each do |method_name|
-      json = RestClient.post "https://slack.com/api/#{method_name}", payload, content_type: :json
-      hash = JSON.parse(json)
-      SlackApiResponse.create(
-        method_name: method_name,
-        ok: hash['ok'],
-        response: hash,
-      )
+      SlackApiResponse.fetch(method_name, payload)
     end
     
   end

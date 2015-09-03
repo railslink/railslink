@@ -21,8 +21,9 @@ gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
-group :development, :test do
+group :development do
   gem 'dotenv-rails'
+  gem 'spring'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-byebug'
@@ -30,5 +31,10 @@ group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'spring'
+end
+
+group :test do
+  gem 'dotenv-rails'
+  gem 'webmock'
+  gem 'vcr'
 end
