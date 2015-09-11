@@ -42,3 +42,6 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# Commit Hook
+.overcommit.yml
