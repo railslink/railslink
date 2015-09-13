@@ -1,10 +1,10 @@
 namespace :slack do
-  
+
   desc 'Updates Slack team info'
   task update: :environment do |task_name, args|
-    
+
     payload = { token: ENV['SLACK_API_TOKEN'] }
-    
+
     # Call Slack API and save the response even if it was failure.
     %w(users.list channels.list).each do |method_name|
       json = RestClient.post "https://slack.com/api/#{method_name}", payload, content_type: :json
@@ -15,6 +15,6 @@ namespace :slack do
         response: hash,
       )
     end
-    
+
   end
 end
