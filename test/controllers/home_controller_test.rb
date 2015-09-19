@@ -12,7 +12,7 @@ class HomeControllerTest < ActionController::TestCase
         get :index
         assert_response :success
         assert assigns(:team_members_count) > 0
-        assert assigns(:channels_hash)['general']['num_members'] > 0
+        assert assigns(:channels).first['name'].present?
         assert_select 'h1', configatron.app_name
       end
     end
