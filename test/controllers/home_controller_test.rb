@@ -1,6 +1,6 @@
 class HomeControllerTest < ActionController::TestCase
   
-  test "should get index" do
+  test 'should get index' do
     VCR.use_cassette('users.list') do
       VCR.use_cassette('channels.list') do
         # initialization
