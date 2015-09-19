@@ -22,30 +22,11 @@
     h2 Channels
     p We have channels like these in our Slack.
     ul.list-unstyled.row
-      li.col-sm-4
-        h3 #introductions
-        | Introduce yourself to other members
-        .num #{@channels_hash['introductions']['num_members']}
-      li.col-sm-4
-        h3 #general
-        | Discuss any programming language or anything
-        .num #{@channels_hash['general']['num_members']}
-      li.col-sm-4
-        h3 #coding
-        | Ask coding question, talk about codes
-        .num #{@channels_hash['coding']['num_members']}
-      li.col-sm-4
-        h3 #work
-        | For people looking for jobs or hires
-        .num #{@channels_hash['work']['num_members']}
-      li.col-sm-4
-        h3 #startup-projects
-        | Share your project built by Rails
-        .num #{@channels_hash['startup-projects']['num_members']}
-      li.col-sm-4
-        h3 #railslink-dev
-        | Develop this website as an open-source
-        .num #{@channels_hash['railslink-dev']['num_members']}
+      - @channels.each do |channel|
+        li.col-sm-4
+          h3 ##{channel['name']}
+          | #{channel['purpose']['value']}
+          .num #{channel['num_members']}
   section
     h2 How to join
     p
