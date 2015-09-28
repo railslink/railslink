@@ -15,9 +15,6 @@
       | We are #{@team_members_count} Ruby on Rails developers from all over the world, 
       | including avid OSS contributors, full-stack engineers, founders of startup, 
       | backend engineers at enterprise and students learning Ruby on Rails.
-    p
-      | 30% of members locate in North America, 30% in Europe, 
-      | 20% in Asia, 10% in South America, 5% in Oceania, and 5% in Africa.
   section#channels
     h2 Channels
     p We have channels like these in our Slack.
@@ -27,6 +24,14 @@
           h3 ##{channel['name']}
           | #{channel['purpose']['value']}
           .num #{channel['num_members']}
+  section#timezones
+    h2 Time Zones
+    p 
+      | We have members from all over the world.
+      br
+      | See how many members live in each time zones.
+    canvas#timezone-chart data-zones=@timezones.keys data-counts=@timezones.values
+    .help-block Stats are based on Slack API. DST applied.
   section
     h2 How to join
     p

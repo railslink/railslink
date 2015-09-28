@@ -13,6 +13,7 @@ class HomeControllerTest < ActionController::TestCase
         assert_response :success
         assert assigns(:team_members_count) > 0
         assert assigns(:channels).first['name'].present?
+        assert assigns(:timezones)['UTC-5'] > 0
         assert_select 'h1', configatron.app_name
       end
     end
