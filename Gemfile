@@ -20,6 +20,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'coveralls', require: false
 
 group :development do
   gem 'dotenv-rails'
