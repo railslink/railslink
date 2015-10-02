@@ -32,7 +32,9 @@ html
     footer
       .container
         p
-          | Have a question? Ask us on 
+          | Have a question? Read our 
+          =link_to 'Resources Wiki', 'https://github.com/railslink/resources/wiki', target: 'new'
+          | , or ask us on 
           =link_to 'Twitter', 'https://twitter.com/railslink', target: 'new'
         .links
           a href="https://twitter.com/railslink" target="_new" = fa_icon('twitter')
