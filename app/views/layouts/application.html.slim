@@ -16,6 +16,10 @@ html
     meta property="og:site_name" content=configatron.app_name
     meta property="og:description" content=description
     meta property="og:image" content=asset_url('railslink-icon-200x200.png')
+    meta name="twitter:card" content="summary"
+    meta name="twitter:site" content="@railslink"
+    meta name="twitter:title" content=title
+    meta name="twitter:description" content=description
     link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Cabin"
     link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"
     link rel="apple-touch-icon" href="/apple-touch-icon.png"
@@ -40,4 +44,5 @@ html
           a href="https://twitter.com/railslink" target="_new" = fa_icon('twitter')
           a href="https://www.facebook.com/groups/railslink/" target="_new" = fa_icon('facebook-official')
           a href="https://github.com/railslink/railslink" target="_new" = fa_icon('github')
+          a href="https://www.producthunt.com/tech/rubyonrails-link" target="_new" = fa_icon('product-hunt')
         .copyright ©#{Time.zone.now.year} #{configatron.app_name}
