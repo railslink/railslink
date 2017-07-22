@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.4'
 
 gem 'rails'
 gem 'puma'
@@ -23,7 +23,6 @@ gem 'font-awesome-rails'
 gem 'coveralls', require: false
 
 group :development do
-  gem 'dotenv-rails'
   gem 'spring'
   gem 'pry'
   gem 'pry-rails'
@@ -35,7 +34,10 @@ group :development do
 end
 
 group :test do
-  gem 'dotenv-rails'
   gem 'webmock'
   gem 'vcr'
+end
+
+group :development, :test do
+  gem 'dotenv-rails'
 end
