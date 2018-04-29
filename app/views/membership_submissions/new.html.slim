@@ -1,0 +1,95 @@
+section.section
+  .columns
+    .column
+      h1.title Join the Ruby on Rails Slack Community
+
+      p In order for us to give you access we need to know a little bit more about you and we need your name and email address.
+        Optional fields are used to help us deter spammers. 
+        At some point we may use this information to build out better member profiles
+        or other useful tools. If that happens you will, of course, have the option to opt out and/or edit your data.
+        Every submission is manually reviewed by one of our community admins.
+        We try to respond within a couple of days.
+
+  = form_for @submission, url: membership_submissions_path do |f|
+    .columns
+      .column
+        .field
+          label.label First Name
+          .control
+            = f.text_field :first_name, required: true, class: ["input", f.object.errors.key?(:first_name) ? "is-danger" : nil]
+          .help 
+            | * Required by Slack
+            span.has-text-danger<= f.object.errors[:first_name].to_sentence
+
+        .field
+          label.label Last Name
+          .control
+            = f.text_field :last_name, required: true, class: ["input", f.object.errors.key?(:last_name) ? "is-danger" : nil]
+          .help 
+            | * Required by Slack
+            .has-text-danger<= f.object.errors[:last_name].to_sentence
+
+        .field
+          label.label Email Address
+          .control.has-icons-left
+            = f.email_field :email, required: true, class: ["input", f.object.errors.key?(:email) ? "is-danger" : nil]
+            span.icon.is-small.is-left: i class="fas fa-envelope"
+          .help 
+            | * Required by Slack
+            .has-text-danger<= f.object.errors[:email].to_sentence
+
+        .field
+          label.label Location
+          .control.has-icons-left
+            .select
+              = f.select :location, ISO3166::Country.all_translated, include_blank: true
+            span.icon.is-small.is-left: i class="fas fa-map-marker-alt"
+
+      .column
+        .field
+          label.label Website
+          .control.has-icons-left
+            = f.url_field :website_url, placeholder: "https://...", class: ["input", f.object.errors.key?(:website_url) ? "is-danger" : nil]
+            span.icon.is-small.is-left: i class="fas fa-globe"
+          .help 
+            .has-text-danger= f.object.errors[:website_url].to_sentence
+            | &nbsp;
+
+        .field
+          label.label Github URL
+          .control.has-icons-left
+            = f.url_field :github_url, placeholder: "https://github.com/...", class: ["input", f.object.errors.key?(:github_url) ? "is-danger" : nil]
+            span.icon.is-small.is-left: i class="fab fa-github"
+          .help 
+            .has-text-danger= f.object.errors[:github_url].to_sentence
+            | &nbsp;
+
+        .field
+          label.label Linkedin URL
+          .control.has-icons-left
+            = f.url_field :linkedin_url, placeholder: "https://linkedin.com/in/...", class: ["input", f.object.errors.key?(:linkedin_url) ? "is-danger" : nil]
+            span.icon.is-small.is-left: i class="fab fa-linkedin"
+          .help 
+            .has-text-danger= f.object.errors[:linkedin_url].to_sentence
+            | &nbsp;
+
+        .field.fax
+          label.label Leave this field blank
+          .control
+            = f.text_field :fax, placeholder: "leave this field blank", class: "input"
+
+        .field
+          label.label How did you hear about this community?
+          .control
+            input.input[type="text" value=@submission.how_hear]
+
+    .columns
+      .column
+        .field
+          label.label Tell us a little bit about yourself.
+          .control
+            textarea.textarea[rows=2]= @submission.introduction
+          .help We don't need specifics, we'd just like to get to know you a little better.
+
+        .has-text-right
+          button.button.is-primary[type="submit"] Join Now

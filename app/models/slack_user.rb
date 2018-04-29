@@ -1,0 +1,50 @@
+class SlackUser < ApplicationRecord
+
+  include Uidable
+  include Emailable
+  include Nameable
+
+  attr_accessor :xoxp_token
+
+  has_one :membership_submission, class_name: "SlackMembershipSubmission"
+
+  scope :deleted, -> { where(is_deleted: true) }
+  scope :extant, -> { where(is_deleted: false) }
+  scope :admins, -> { where(is_admin: true) }
+  scope :bots, -> { where(is_bot: true) }
+  scope :human, -> { where(is_bot: false) }
+  scope :available, -> { extant.human }
+
+  def self.find_or_create_from_auth_hash(auth_hash)
+    user = find_or_create_from_api_response(auth_hash.extra.user_info.user)
+    user.xoxp_token = auth_hash.credentials.token
+    user
+  end
+
+  def self.find_or_create_from_api_response(data)
+    user = find_by(uid: data.id) || new
+    user.update(
+      uid: data.id,
+      username: data.name,
+      email: data.profile.email,
+      first_name: data.profile.first_name,
+      last_name: data.profile.last_name,
+      tz: data.tz,
+      tz_offset: data.tz_offset,
+      locale: data.locale,
+      is_deleted: data.deleted,
+      is_admin: data.is_admin,
+      is_bot: data.is_bot,
+      data: data
+    )
+    user
+  end
+
+  def self.tz_offset_distribution
+    results = where.not(tz_offset: nil).group("tz_offset / 3600")
+      .count
+      .sort
+      .map {|k, v| [sprintf("UTC%+d", k), v]}
+    Hash[results]
+  end
+end

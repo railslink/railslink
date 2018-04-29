@@ -1,15 +1,9 @@
 class HomeController < ApplicationController
-  
   def index
-    
-    # Cache everything for a day to avoid DB hit and try to stay under heroku memory limits
-    @team_members_count, @channels, @timezones = cache(Date.today) do
-      [
-        SlackApiResponse.members.size,
-        SlackApiResponse.popular_channels,
-        SlackApiResponse.tz_distribution
-      ]
-    end
+    @team_members_count = SlackUser.available.count
+    @other_channels = SlackChannel.available.popular.to_a
+    @channels_count = @other_channels.size
+    @popular_channels = @other_channels.slice!(0, 6)
+    @timezones = SlackUser.tz_offset_distribution
   end
-
 end

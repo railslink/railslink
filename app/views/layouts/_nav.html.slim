@@ -1,0 +1,21 @@
+- unless is_homepage?
+  nav.navbar.is-light
+    .navbar-brand
+      .navbar-item
+        = image_tag "railslink-icon.png", alt: "", id: "logo"
+        b= configatron.app_name
+
+    / TODO Make this hamburger/mobile - https://bulma.io/documentation/components/navbar/#navbar-burger
+    .navbar-menu.is-active
+      .navbar-start
+        - if in_admin_space?
+          = link_to "Users", "#TODO", class: "navbar-item"
+          = link_to "Channels", "#TODO", class: "navbar-item"
+          = link_to "Pending Submissions", pending_admin_membership_submissions_path, class: "navbar-item"
+        - else
+          = link_to_open_slack
+      .navbar-end
+        = link_to_login_or_logout
+        - if current_user
+          .navbar-item
+            = image_tag current_user.data["profile"]["image_32"], alt: ""

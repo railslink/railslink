@@ -1,0 +1,58 @@
+section.section
+  .columns
+    .column
+      h1.title #{number_with_delimiter @num_pending} Pending Membership Submissions
+
+  .columns
+    .column
+      .field
+        label.label Name
+        .control
+          input.input[type="text" disabled value=@submission.name]
+
+      .field
+        label.label Email
+        .control
+          input.input[type="email" disabled value=@submission.email]
+
+      .field
+        label.label Location
+        .control
+          input.input[type="text" disabled value=@submission.location]
+
+      .field
+        label.label Created At
+        .control
+          input.input[type="text" disabled value=@submission.created_at]
+    
+    .column
+      .field
+        label.label Website
+        .control
+          input.input[type="text" disabled value=@submission.website_url]
+
+      .field
+        label.label Github URL
+        .control
+          input.input[type="text" disabled value=@submission.github_url]
+
+      .field
+        label.label Linkedin URL
+        .control
+          input.input[type="text" disabled value=@submission.linkedin_url]
+
+    .column
+      .field
+        label.label How Hear?
+        .control
+          input.input[type="text" disabled value=@submission.how_hear]
+
+      .field
+        label.label Introduction
+        .control
+          textarea.textarea[disabled]= @submission.introduction
+
+      .has-text-right
+        = link_to "Reject", reject_admin_membership_submission_path(@submission), class: "button is-danger"
+        | &nbsp;
+        = link_to "Approve", approve_admin_membership_submission_path(@submission), class: "button is-success"

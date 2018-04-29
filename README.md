@@ -9,44 +9,26 @@ http://www.rubyonrails.link
 
 Official website of Ruby on Rails Link.
 
-
 ## Getting Started
 
-### Dependencies
-Make sure you have installed bundler and PostgreSQL.
+### Requirements
 
-```
-# if you need to install PostgreSQL on Mac with Homebrew
-
-brew install postgresql
-```
+- Ruby 2.4.2
+- PostgreSQL 9.x
 
 ### Setup
 
-Clone this repo and configure database.
+  - Acquire the missing ENV vars in `.env` from another Slack admin or the Heroku
+    project.  Add them to `.env.local`.
 
-If you already have a local PostgreSQL superuser, make `.env` file on project root and configure like this:
+  - Install gems: `bundle install`
 
-```
-PG_USER=mysuperuser
-PG_PASSWORD=mypassword
-SLACK_API_TOKEN=your-slack-api-token
-```
+  - Test the Slack API: `rake slack:test:api`
 
-You can get your Slack API token at https://api.slack.com/web#authentication
+  - Create the database: `rake db:setup`
 
-If you don't have a superuser yet, create railslink user, with password "railspgpw"
+  - Sync Slack channels: `rake slack:sync:channels`
 
-```
-createuser -P -s -e railslink
-```
+  - Optionally sync Slack users: `rake slack:sync:users`
 
-Then run:
-
-```
-bundle
-bundle exec rake db:create
-bundle exec rake db:migrate
-bundle exec rake slack:update
-bundle exec rails s
-````
+  - Start the Rails server: `rails s`

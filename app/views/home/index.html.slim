@@ -1,46 +1,65 @@
-.container
-  section
-    =image_tag 'railslink-icon.png', size: '100x100'
-    h1 =configatron.app_name
-    p
-      | We are a community of Ruby on Rails developers from all over the world.
+section.section.has-text-centered
+  .columns
+    .column
+      = image_tag "railslink-icon.png", size: "100x100", alt: ""
+      h1.title= configatron.app_name
+      .content
+        p
+          | We are a community of Ruby on Rails developers from all over the world.
+          br
+          | Join us and talk on Slack!
+        p= link_to 'Join Now', new_membership_submission_path, id: 'join-now', class: 'button is-primary is-medium'
+        p= link_to 'Already a member? Sign in here.', 'https://rubyonrails-link.slack.com', class: 'has-text-primary'
+
+hr
+
+section.section.has-text-centered
+  .columns
+    .column.is-8.is-offset-2
+      h2.subtitle.is-3 Who We Are
+      p
+        | We are #{number_with_delimiter @team_members_count} Ruby on Rails developers from all over the world, 
+        | including avid OSS contributors, full-stack engineers, startup founders,
+        | backend engineers, and people just learning Ruby on Rails.
+
+hr
+
+section.section.has-text-centered
+  .columns
+    .column.is-8.is-offset-2
+      h2.subtitle.is-3 Channels
+      p We currently have #{@channels_count} channels in our Slack community.
       br
-      | Join us and talk on Slack!
-    div
-      =link_to 'Join Now', 'https://rubyonrails.typeform.com/to/g9CVKl', id: 'join-now', class: 'btn btn-danger btn-lg'
-    =link_to 'Already a member? Sign in here', 'https://rubyonrails-link.slack.com', class: 'btn btn-link'
-  section
-    h2 Who we are
-    p
-      | We are #{@team_members_count} Ruby on Rails developers from all over the world, 
-      | including avid OSS contributors, full-stack engineers, founders of startup, 
-      | backend engineers at enterprise and students learning Ruby on Rails.
-  section#channels
-    h2 Channels
-    p We have channels like these in our Slack.
-    ul.list-unstyled.row
-      - @channels.each do |channel|
-        li.col-sm-4
-          h3 ##{channel['name']}
-          | #{channel['purpose']['value']}
-          .num #{channel['num_members']}
-  section#timezones
-    h2 Time Zones
-    p 
-      | We have members from all over the world.
-      br
-      | See how many members live in each time zone.
-    .chart-container
-      canvas#timezone-chart width='240' height='168' data-zones=@timezones.keys data-counts=@timezones.values
-    .help-block Stats are based on Slack API. DST applied.
-  section
-    h2 How to join
-    p
-      | It’s free to join.
-      br
-      | Please input some info about yourself from the form below.
-      br
-      | We'll send you an invitation to our Slack.
-    .typeform-widget data-url='https://rubyonrails.typeform.com/to/g9CVKl' data-text='Registration Form' style='width:100%;height:400px;' 
-    javascript:
-      (function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()
+      .columns.is-multiline
+        - @popular_channels.each do |channel|
+          .column.is-4.has-text-left
+            .has-text-grey.is-size-4 ##{channel.name}
+            p 
+              = channel.purpose
+              br
+              span.has-text-primary #{number_with_delimiter channel.members_count}
+              span.has-text-grey-light< members
+        .column.is-12
+          .has-text-grey.is-size-7= @other_channels.map{|e| "##{e.name}"}.sort.join(", ")
+
+hr
+
+section.section.has-text-centered
+  .columns.is-multiline
+    .column.is-8.is-offset-2
+      h2.subtitle.is-3 Time Zones
+      p 
+        | We have #{number_with_delimiter @team_members_count} members from all over the world.
+        br
+        | See how many members live in each time zone.
+    .column.is-6.is-offset-3
+      .column.chart-container
+        canvas#timezone-chart data-zones=@timezones.keys data-counts=@timezones.values
+
+hr
+
+section.section.has-text-centered
+  .columns
+    .column
+      .content
+        p= link_to 'Join Now', new_membership_submission_path, id: 'join-now', class: 'button is-primary is-medium'
