@@ -1,7 +1,58 @@
-namespace :typeform do
+namespace :fu do
+
+  desc "Update Pending Invites from HTML"
+  task :update_pending_invites, [:file] => ["environment"] do |_t, args|
+    pending_invites_str = nil
+    File.open(args.file) do |f|
+      f.each_line do |line|
+        if line =~ /boot_data\.pending_invites = (.*);$/ 
+          pending_invites_str = $1 
+          break
+        end
+      end
+    end
+
+    pending_invites = JSON.parse(pending_invites_str)
+
+    puts "Updating #{pending_invites.size} pending invites..."
+
+    pending_invites.each do |invite|
+      email = invite["email"].downcase
+      puts " - #{email}"
+
+      submission = SlackMembershipSubmission.find_by(email: email) ||
+                   SlackMembershipSubmission.new
+
+      if invite["bouncing"]
+        submission.rejected! if submission.persisted?
+        next
+      end
+
+      if submission.new_record?
+        submission.update!(
+          first_name: "n/a",
+          last_name: "n/a",
+          email: email,
+          created_at: Time.at(invite["date_create"].to_i),
+          updated_at: Time.at(invite["date_create"].to_i),
+        )
+      end
+
+      submission.approved! if submission.pending?
+
+      user = SlackUser.find_by(email: email)
+      if user
+        submission.user = user
+        submission.rejected! if user.is_deleted?
+      elsif submission.created_at <= 6.months.ago
+        submission.ignored!
+      end
+    end
+
+  end
 
   desc "Import typeform CSV data"
-  task :import, [:file] => ["environment"] do |_t, args|
+  task :typeform_import, [:file] => ["environment"] do |_t, args|
     require 'csv'
     puts "Importing typeform csv data..."
     CSV.foreach(args.file, headers: true) do |row|
