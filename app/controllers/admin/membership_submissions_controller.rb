@@ -1,4 +1,4 @@
-class Admin::MembershipSubmissionsController < ApplicationController
+class Admin::MembershipSubmissionsController < AdminController
   def pending
     @num_pending = SlackMembershipSubmission.pending.count
 
