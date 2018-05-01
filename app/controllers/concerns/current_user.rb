@@ -10,7 +10,7 @@ module CurrentUser
 
   def current_user
     return unless session[:user_id]
-    Thread.current[:current_user] = SlackUser.find_by(id: session[:user_id]).tap do |user|
+    Thread.current[:current_user] ||= SlackUser.find_by(id: session[:user_id]).tap do |user|
       user.xoxp_token = session[:xoxp_token] if user
     end
   end
