@@ -27,8 +27,8 @@ jobs:
       # Restore bundle cache
       - restore_cache:
           keys:
-            - railslink-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - railslink-bundle-v2-
+            - railslink-bundle-{{ checksum "Gemfile.lock" }}
+            - railslink-bundle-
 
       - run:
           name: Bundle Install
@@ -36,7 +36,7 @@ jobs:
 
       # Store bundle cache
       - save_cache:
-          key: railslink-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: railslink-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
