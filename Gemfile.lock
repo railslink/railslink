@@ -253,6 +253,7 @@ DEPENDENCIES
   rails-assets-bulma!
   rails-assets-chartjs!
   rails-assets-fontawesome!
+  rake (~> 12.3.1)
   rollbar (~> 2.15.6)
   rspec-rails (~> 3.7)
   sass-rails (~> 5.0)

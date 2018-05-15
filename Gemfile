@@ -33,6 +33,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.8'                                # provides integration between factory_bot and rails
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]              # ruby debugger
   gem 'pry-rails'                                                  # use pry as your rails console
+  gem 'rake', '~> 12.3.1'                                          # make-like program implemented in ruby
 end
 
 group :development do
