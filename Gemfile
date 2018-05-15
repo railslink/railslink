@@ -30,6 +30,7 @@ gem 'uglifier', '>= 1.3.0'                                         # compressor 
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'                                      # testing framework
+  gem 'rspec_junit_formatter', '~> 0.3.0'                          # rSpec results that your continuous integration service can read
   gem 'factory_bot_rails', '~> 4.8'                                # provides integration between factory_bot and rails
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]              # ruby debugger
   gem 'pry-rails'                                                  # use pry as your rails console
