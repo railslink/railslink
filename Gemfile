@@ -18,6 +18,7 @@ gem 'countries', '~> 2.1.4'                                        # all sorts o
 gem 'oj', '~> 2.16.1'                                              # fast json parser and object serializer
 gem 'pg', '>= 0.18', '< 2.0'                                       # use postgresql as the database
 gem 'puma', '~> 3.7'                                               # use puma as the app server
+gem 'rack-attack', '~> 5.2.0'                                      # rack middleware for blocking & throttling abusive requests
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css framework based on flexbox
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
 gem 'rails-assets-fontawesome', source: 'https://rails-assets.org' # iconic svg, font, and css toolkit
