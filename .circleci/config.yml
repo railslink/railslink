@@ -14,7 +14,7 @@ jobs:
       - image: circleci/postgres:9.6.8-alpine
         environment:
           POSTGRES_USER: railslink
-          POSTGRES_DB: railslink
+          POSTGRES_DB: ruby_on_rails_link_test
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
@@ -23,11 +23,6 @@ jobs:
       - run:
           name: Reinstall bundler gem
           command: gem install bundler
-
-      # Which version of bundler?
-      - run:
-          name: Which bundler?
-          command: bundle -v
 
       # Restore bundle cache
       - restore_cache:
@@ -45,21 +40,21 @@ jobs:
           paths:
             - vendor/bundle
 
-      # Only necessary if app uses webpacker or yarn in some other way
-      - restore_cache:
-          keys:
-            - railslink-yarn-{{ checksum "yarn.lock" }}
-            - railslink-yarn-
+      # # Only necessary if app uses webpacker or yarn in some other way
+      # - restore_cache:
+      #     keys:
+      #       - railslink-yarn-{{ checksum "yarn.lock" }}
+      #       - railslink-yarn-
 
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
+      # - run:
+      #     name: Yarn Install
+      #     command: yarn install --cache-folder ~/.cache/yarn
 
-      # Store yarn / webpacker cache
-      - save_cache:
-          key: railslink-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      # # Store yarn / webpacker cache
+      # - save_cache:
+      #     key: railslink-yarn-{{ checksum "yarn.lock" }}
+      #     paths:
+      #       - ~/.cache/yarn
 
       - run:
           name: Wait for DB
