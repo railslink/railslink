@@ -24,7 +24,7 @@ class SlackEvent::MessageJob < ApplicationJob
   private :options
 
   def perform(options = {})
-    @options = options
+    @options = options.with_indifferent_access
     update_last_message_at
   end
 

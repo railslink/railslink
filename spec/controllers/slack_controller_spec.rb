@@ -37,11 +37,8 @@ RSpec.describe SlackController, type: :controller do
 
       describe "event type message" do
         it "enqueues SlackEvent::MessageJob" do
-          slack_params = {token: token, event: {type: "message", user: "u123"}}
-
-          expect(SlackEvent::MessageJob).to receive(:perform_later).
-            with(ActionController::Parameters.new(slack_params).permit!)
-
+          slack_params = {token: token, event: {type: "message", user: "u123"}}.with_indifferent_access
+          expect(SlackEvent::MessageJob).to receive(:perform_later).with(slack_params)
           post :event, params: {slack: slack_params}
         end
       end
