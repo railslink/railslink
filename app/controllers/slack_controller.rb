@@ -10,7 +10,7 @@ class SlackController < ApplicationController
       return
     end
 
-    case slack_params[:event][:type]
+    case slack_params.fetch(:event, {})[:type]
     when "message"
       SlackEvent::MessageJob.perform_later(slack_params)
     end
