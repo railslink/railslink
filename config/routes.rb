@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  namespace :slack do
+    post "event"
+  end
+
   get "/login"                   , to: "sessions#new"     , as: :login
   get "/logout"                  , to: "sessions#destroy" , as: :logout
   get "/auth/failure"            , to: "sessions#failure"

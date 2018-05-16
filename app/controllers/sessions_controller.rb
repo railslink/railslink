@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     if params[:require] == "admin"
       request.env["omniauth.strategy"].options["scope"] = "client" 
     end
-    render plain: "", status: 404
+    head :not_found
   end
 
   def create
