@@ -26,6 +26,7 @@ gem 'rollbar', '~> 2.15.6'                                         # exception t
 gem 'sass-rails', '~> 5.0'                                         # ruby on rails stylesheet engine for sass
 gem 'slack-ruby-client', '~> 0.11'                                 # client for the slack web and real time messaging apis
 gem 'slim-rails'                                                   # slim templates generator for rails 3, 4 and 5
+gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
 gem 'uglifier', '>= 1.3.0'                                         # compressor for javascript assets
 
 group :development, :test do

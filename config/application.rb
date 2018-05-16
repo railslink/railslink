@@ -34,11 +34,14 @@ module RubyOnRailsLink
     config.generators.stylesheets = false
     config.generators.view_specs = false
 
+    # Middleware
+    config.middleware.use Rack::Attack
+
+    # Active Job
+    config.active_job.queue_adapter = :sucker_punch
+
     # Application configuration
     configatron.app_name = 'Ruby on Rails Link'
     configatron.ga.tracking_id = 'UA-64301219-1'
-
-    # Middleware
-    config.middleware.use Rack::Attack
   end
 end
