@@ -28,10 +28,21 @@ RSpec.describe SlackController, type: :controller do
         end
       end
 
-      describe "type unknown" do
+      describe "event type unknown" do
         it "renders nothing" do
-          post :event, params: {slack: {token: token, type: "unknown_invalid_etc", challenge: "challenge"}}
+          post :event, params: {slack: {token: token, event: {type: "unknown_invalid_etc"}}}
           expect(response.body).to eq ""
+        end
+      end
+
+      describe "event type message" do
+        it "enqueues SlackEvent::MessageJob" do
+          slack_params = {token: token, event: {type: "message", user: "u123"}}
+
+          expect(SlackEvent::MessageJob).to receive(:perform_later).
+            with(ActionController::Parameters.new(slack_params).permit!)
+
+          post :event, params: {slack: slack_params}
         end
       end
     end

@@ -9,6 +9,12 @@ class SlackController < ApplicationController
       render plain: slack_params[:challenge]
       return
     end
+
+    case slack_params[:event][:type]
+    when "message"
+      SlackEvent::MessageJob.perform_later(slack_params)
+    end
+
     head :ok
   end
 
@@ -24,19 +30,3 @@ class SlackController < ApplicationController
     params.require(:slack).permit!
   end
 end
-
-__END__
-"slack"=>{"token"=>"pL4lmrHYWTuJyCOEekfJfuw7",
-"team_id"=>"T05052K3Q",
-"api_app_id"=>"A9MR2EQDQ",
-"event"=>{"type"=>"message",
-"user"=>"U6D5W3NCC",
-"text"=>"something",
-"ts"=>"1526446776.000167",
-"channel"=>"C05052K88",
-"event_ts"=>"1526446776.000167",
-"channel_type"=>"channel"},
-"type"=>"event_callback",
-"event_id"=>"EvAQE3M1PD",
-"event_time"=>1526446776,
-"authed_users"=>["U054D8V3L"]}
