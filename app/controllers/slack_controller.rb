@@ -1,4 +1,5 @@
 class SlackController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :verify_token!
 
   # see https://api.slack.com/events-api
