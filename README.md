@@ -12,7 +12,7 @@ Official website of Ruby on Rails Link.
 
 ### Requirements
 
-- Ruby 2.4.2
+- Ruby 2.4.4
 - PostgreSQL 9.x
 
 ### Setup
