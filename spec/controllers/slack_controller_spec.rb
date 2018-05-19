@@ -28,10 +28,11 @@ RSpec.describe SlackController, type: :controller do
         end
       end
 
-      describe "event type unknown" do
-        it "renders nothing" do
-          post :event, params: {slack: {token: token, event: {type: "unknown_invalid_etc"}}}
-          expect(response.body).to eq ""
+      describe "event type unhandled" do
+        it "enqueues SlackEvent::UnhandledJob" do
+          slack_params = {token: token, event: {type: "unhandled"}}.with_indifferent_access
+          expect(SlackEvent::UnhandledJob).to receive(:perform_later).with(slack_params)
+          post :event, params: {slack: slack_params}
         end
       end
 

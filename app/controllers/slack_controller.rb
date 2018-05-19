@@ -13,6 +13,8 @@ class SlackController < ApplicationController
     case slack_params.fetch(:event, {})[:type]
     when "message"
       SlackEvent::MessageJob.perform_later(slack_params.to_hash)
+    else
+      SlackEvent::UnhandledJob.perform_later(slack_params.to_hash)
     end
 
     head :ok

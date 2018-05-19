@@ -22,6 +22,7 @@ gem 'rack-attack', '~> 5.2.0'                                      # rack middle
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css framework based on flexbox
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
 gem 'rails-assets-fontawesome', source: 'https://rails-assets.org' # iconic svg, font, and css toolkit
+gem 'redis', '~> 4.0.1'                                            # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
 gem 'rollbar', '~> 2.15.6'                                         # exception tracking for ruby
 gem 'sass-rails', '~> 5.0'                                         # ruby on rails stylesheet engine for sass
 gem 'slack-ruby-client', '~> 0.11'                                 # client for the slack web and real time messaging apis
@@ -43,6 +44,7 @@ group :development do
 end
 
 group :test do
+  gem 'fakeredis', '~> 0.7.0'                                      # fake (in-memory) driver for redis-rb
   gem 'shoulda', '~> 3.5'                                          # makes tests easy on the fingers and eyes
 end
 
