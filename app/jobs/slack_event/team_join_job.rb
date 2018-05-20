@@ -89,7 +89,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
 
       *We don't have many rules, but we do have a few:*
 
-      1. Be nice to each other.
+      1. Be kind.
       2. Don't use `@everyone`, `@channel`, `@group` or `@here`.
       3. Don't ask if you can ask a question; just ask.
       4. Don't ask the same question in multiple channels.
