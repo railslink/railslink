@@ -68,7 +68,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
 
   private
 
-  def welcome_user_to_team(user: user)
+  def welcome_user_to_team(user:)
     client = Slack::Web::Client.new
     dm_channel = client.im_open(user: user[:id]).channel.id
     client.chat_postMessage(
@@ -81,7 +81,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
     )
   end
 
-  def welcome_text(user: user)
+  def welcome_text(user:)
     %Q(
       *Welcome to #{configatron.app_name} #{user[:real_name] || user[:name]} :wave:*
 
