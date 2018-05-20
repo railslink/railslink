@@ -36,6 +36,14 @@ RSpec.describe SlackController, type: :controller do
         end
       end
 
+      describe "event type member_joined_channel" do
+        it "enqueues SlackEvent::MemberJoinedChannelJob" do
+          slack_params = {token: token, event: {type: "member_joined_channel"}}.with_indifferent_access
+          expect(SlackEvent::MemberJoinedChannelJob).to receive(:perform_later).with(slack_params)
+          post :event, params: {slack: slack_params}
+        end
+      end
+
       describe "event type message" do
         it "enqueues SlackEvent::MessageJob" do
           slack_params = {token: token, event: {type: "message", user: "u123"}}.with_indifferent_access
