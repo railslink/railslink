@@ -28,10 +28,10 @@ RSpec.describe SlackController, type: :controller do
         end
       end
 
-      describe "event type unhandled" do
-        it "enqueues SlackEvent::UnhandledJob" do
-          slack_params = {token: token, event: {type: "unhandled"}}.with_indifferent_access
-          expect(SlackEvent::UnhandledJob).to receive(:perform_later).with(slack_params)
+      describe "event type message" do
+        it "enqueues SlackEvent::MessageJob" do
+          slack_params = {token: token, event: {type: "message", user: "u123"}}.with_indifferent_access
+          expect(SlackEvent::MessageJob).to receive(:perform_later).with(slack_params)
           post :event, params: {slack: slack_params}
         end
       end
@@ -44,10 +44,18 @@ RSpec.describe SlackController, type: :controller do
         end
       end
 
-      describe "event type message" do
-        it "enqueues SlackEvent::MessageJob" do
-          slack_params = {token: token, event: {type: "message", user: "u123"}}.with_indifferent_access
-          expect(SlackEvent::MessageJob).to receive(:perform_later).with(slack_params)
+      describe "event type team_join" do
+        it "enqueues SlackEvent::TeamJoinJob" do
+          slack_params = {token: token, event: {type: "team_join"}}.with_indifferent_access
+          expect(SlackEvent::TeamJoinJob).to receive(:perform_later).with(slack_params)
+          post :event, params: {slack: slack_params}
+        end
+      end
+
+      describe "event type unhandled" do
+        it "enqueues SlackEvent::UnhandledJob" do
+          slack_params = {token: token, event: {type: "unhandled"}}.with_indifferent_access
+          expect(SlackEvent::UnhandledJob).to receive(:perform_later).with(slack_params)
           post :event, params: {slack: slack_params}
         end
       end
