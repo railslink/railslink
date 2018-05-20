@@ -60,7 +60,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
 
   def perform(options = {})
     @options = options.with_indifferent_access
-    user = options[:event][:user]
+    user = @options[:event][:user]
     return if user[:is_bot]
 
     welcome_user_to_team(user: user)
