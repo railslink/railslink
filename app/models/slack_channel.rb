@@ -23,4 +23,8 @@ class SlackChannel < ApplicationRecord
     )
     channel
   end
+
+  def name_with_hash
+    "##{name}"
+  end
 end

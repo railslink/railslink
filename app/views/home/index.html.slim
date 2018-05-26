@@ -33,14 +33,14 @@ section.section.has-text-centered
       .columns.is-multiline
         - @popular_channels.each do |channel|
           .column.is-4.has-text-left
-            .has-text-grey.is-size-4 ##{channel.name}
+            .has-text-grey.is-size-4 channel.name_with_hash
             p 
               = channel.purpose
               br
               span.has-text-primary #{number_with_delimiter channel.members_count}
               span.has-text-grey-light< members
         .column.is-12
-          .has-text-grey.is-size-7= @other_channels.map{|e| "##{e.name}"}.sort.join(", ")
+          .has-text-grey.is-size-7= @other_channels.map(&:name_with_hash).sort.join(", ")
 
 hr
 
