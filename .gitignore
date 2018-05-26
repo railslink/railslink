@@ -8,3 +8,4 @@
 /yarn-error.log
 .byebug_history
 .env.local
+.env.test.local

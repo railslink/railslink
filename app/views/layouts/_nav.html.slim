@@ -10,7 +10,7 @@
       .navbar-start
         - if in_admin_space?
           = link_to "Users", "#TODO", class: "navbar-item"
-          = link_to "Channels", "#TODO", class: "navbar-item"
+          = link_to "Channels", admin_channels_path, class: "navbar-item"
           = link_to "Pending Submissions", pending_admin_membership_submissions_path, class: "navbar-item"
         - else
           = link_to_open_slack
