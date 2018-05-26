@@ -33,7 +33,7 @@ section.section.has-text-centered
       .columns.is-multiline
         - @popular_channels.each do |channel|
           .column.is-4.has-text-left
-            .has-text-grey.is-size-4 channel.name_with_hash
+            .has-text-grey.is-size-4= channel.name_with_hash
             p 
               = channel.purpose
               br
