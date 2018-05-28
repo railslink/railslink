@@ -30,6 +30,7 @@ RSpec.describe SlackMembershipSubmission, type: :model do
     it { should allow_value("").for(:linkedin_url) }
     it { should allow_value("http://linkedin.com/in/johndoe").for(:linkedin_url) }
     it { should allow_value("https://linkedin.com/in/johndoe").for(:linkedin_url) }
+    it { should allow_value("https://www.linkedin.com/in/johndoe").for(:linkedin_url) }
     it { should_not allow_value("https://notlinkedin.com/johndoe").for(:linkedin_url) }
   end
 
