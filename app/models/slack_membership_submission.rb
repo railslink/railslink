@@ -17,7 +17,7 @@ class SlackMembershipSubmission < ApplicationRecord
   # email is handled by Emailable concern
   validates :website_url, format: { with: %r{\Ahttps?://.*\.}, allow_blank: true }
   validates :github_url, format: { with: %r{\Ahttps?://github.com/}, allow_blank: true }
-  validates :linkedin_url, format: { with: %r{\Ahttps?://linkedin.com/in/}, allow_blank: true }
+  validates :linkedin_url, format: { with: %r{\Ahttps?://(www\.)?linkedin.com/in/}, allow_blank: true }
 
   scope :chronologically, -> { order(:created_at) }
 
