@@ -44,6 +44,7 @@ RSpec.describe MembershipSubmissionsController, type: :controller do
           email: "john@doe.com",
           first_name: "John",
           last_name: "Doe",
+          introduction: "Once upon a time..."
         }}
       end
 

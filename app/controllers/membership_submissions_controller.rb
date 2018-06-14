@@ -23,6 +23,6 @@ class MembershipSubmissionsController < ApplicationController
   def submission_params
     params.require(:slack_membership_submission).
       permit(:first_name, :last_name, :email, :location, 
-             :website_url, :github_url, :linkedin_url, :fax)
+             :website_url, :github_url, :linkedin_url, :introduction, :fax)
   end
 end

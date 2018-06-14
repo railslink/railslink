@@ -32,6 +32,8 @@ RSpec.describe SlackMembershipSubmission, type: :model do
     it { should allow_value("https://linkedin.com/in/johndoe").for(:linkedin_url) }
     it { should allow_value("https://www.linkedin.com/in/johndoe").for(:linkedin_url) }
     it { should_not allow_value("https://notlinkedin.com/johndoe").for(:linkedin_url) }
+
+    it { should validate_presence_of(:introduction) }
   end
 
   it "sets status to pending on create" do
