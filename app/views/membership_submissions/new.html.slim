@@ -88,8 +88,8 @@ section.section
         .field
           label.label Tell us a little bit about yourself.
           .control
-            textarea.textarea[rows=2]= @submission.introduction
-          .help We don't need specifics, we'd just like to get to know you a little better.
+            = f.text_area :introduction, required: true, rows: 2, class: "textarea"
+          .help * Required. We don't need specifics, we'd just like to get to know you a little better.
 
         .has-text-right
           button.button.is-primary[type="submit"] Join Now
