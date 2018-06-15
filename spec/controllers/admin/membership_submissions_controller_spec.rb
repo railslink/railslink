@@ -53,7 +53,7 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
       end
 
       it "sets flash/warning to indicate previous status" do
-        expect(flash[:warning]).to match(/John Doe was previously approved/i)
+        expect(flash[:warning]).to match(/was previously approved/i)
       end
 
       it "redirects to admin path" do
@@ -76,7 +76,7 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
       end
 
       it "sets the flash/info to indicate membership rejection" do
-        expect(flash[:info]).to match(/John Doe was rejected/i)
+        expect(flash[:info]).to match(/was rejected/i)
       end
 
       it "redirects to pending admin membership submissions path" do
@@ -97,7 +97,7 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
       end
 
       it "sets the flash/warning to indicate membership rejection" do
-        expect(flash[:warning]).to match(/John Doe was previously approved/i)
+        expect(flash[:warning]).to match(/was previously approved/i)
       end
 
       it "redirects to admin pending membership path" do
