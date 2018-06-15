@@ -33,9 +33,9 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
         get :pending
       end
 
-      it "does not set flash/info and returns first membership submission" do
+      it "does not set flash/info and returns success" do
         expect(flash[:info]).to be_blank
-        expect(SlackMembershipSubmission.find_by_email('johndoe@email.com')).to eq @slack_membership_1
+        expect(response).to have_http_status(:success)
       end
     end
   end
