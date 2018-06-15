@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
   describe "GET #index" do
     it "redirects to admin dashboard" do
-      allow(@controller).to receive(:require_admin!).and_return(true)
+      authorize_admin!
       get :index
       expect(response).to redirect_to(admin_path)
     end
@@ -12,29 +12,32 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
   describe "GET #pending" do
     describe "when pending submissions are zero" do
       before do
-        allow(@controller).to receive(:require_admin!).and_return(true)
+        authorize_admin!
         get :pending
       end
 
-      it "redirects to admin_path" do
-        expect(response).to redirect_to(admin_path)
+      it "sets the flash to indicate there are no submissions" do
+        expect(flash[:info]).to match(/no pending submissions/i)
       end
 
-      it "sets flash/info" do
-        expect(flash[:info]).to match(/submissions/i)
+      it "redirects to admin path" do
+        expect(response).to redirect_to(admin_path)
       end
     end
 
-    describe "when pending submissions are grater than zero" do
+    describe "when pending submissions are greater than zero" do
+      let!(:slack_membership) { create(:slack_membership_submission) }
+
       before do
-        @slack_membership_1 = create(:slack_membership_submission, email: 'johndoe@email.com')
-        @slack_membership_2 = create(:slack_membership_submission, email: 'johndoe2@email.com')
-        allow(@controller).to receive(:require_admin!).and_return(true)
+        authorize_admin!
         get :pending
       end
 
-      it "does not set flash/info and returns success" do
+      it "does not set flash/info" do
         expect(flash[:info]).to be_blank
+      end
+
+      it "returns success" do
         expect(response).to have_http_status(:success)
       end
     end
@@ -42,53 +45,62 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
 
   describe "GET #approve" do
     describe "when pending submissions are zero" do
+      let!(:slack_membership) { create(:approved_slack_membership_submission) }
+
       before do
-        @slack_membership = create(:slack_membership_submission, email: 'johndoe@email.com', status: 1)
-        allow(@controller).to receive(:require_admin!).and_return(true)
-        get :approve, {params: {id: @slack_membership.id}}
+        authorize_admin!
+        get :approve, {params: {id: slack_membership.id}}
       end
 
-      it "does set flash/info" do
-        expect(flash[:warning]).to match(/approved/i)
+      it "sets flash/warning to indicate previous status" do
+        expect(flash[:warning]).to match(/John Doe was previously approved/i)
       end
 
-      it "redirects to admin_path" do
+      it "redirects to admin path" do
         expect(response).to redirect_to(pending_admin_membership_submissions_path)
       end
     end
   end
 
-  describe "POST #reject" do
+  describe "GET #reject" do
     describe "when submission is pending" do
+      let!(:slack_membership) { create(:slack_membership_submission) }
+
       before do
-        @slack_membership = create(:slack_membership_submission, email: 'johndoe@email.com')
-        allow(@controller).to receive(:require_admin!).and_return(true)
-        post :reject, {params: {id: @slack_membership.id}}
+        authorize_admin!
+        post :reject, {params: {id: slack_membership.id}}
       end
 
-      it "rejects submission and sets flash/info" do
-        expect(@slack_membership.reload.status).to eq "rejected"
-        expect(flash[:info]).to match(/rejected/i)
+      it "rejects slack membership submission" do
+        expect(slack_membership.reload.status).to eq "rejected"
       end
 
-      it "redirects to pending_admin_membership_submissions_path" do
+      it "sets the flash/info to indicate membership rejection" do
+        expect(flash[:info]).to match(/John Doe was rejected/i)
+      end
+
+      it "redirects to pending admin membership submissions path" do
         expect(response).to redirect_to(pending_admin_membership_submissions_path)
       end
     end
 
     describe "when submission is not pending" do
+      let!(:slack_membership) { create(:approved_slack_membership_submission) }
+
       before do
-        @slack_membership = create(:slack_membership_submission, email: 'johndoe@email.com', status: 1)
-        allow(@controller).to receive(:require_admin!).and_return(true)
-        post :reject, {params: {id: @slack_membership.id}}
+        authorize_admin!
+        post :reject, {params: {id: slack_membership.id}}
       end
 
-      it "rejects submission and sets flash/warning" do
-        expect(@slack_membership.reload.status).to eq "approved"
-        expect(flash[:warning]).to match(/previously/i)
+      it "rejects slack membership submission" do
+        expect(slack_membership.reload.status).to eq "approved"
       end
 
-      it "redirects to admin pending membership" do
+      it "sets the flash/warning to indicate membership rejection" do
+        expect(flash[:warning]).to match(/John Doe was previously approved/i)
+      end
+
+      it "redirects to admin pending membership path" do
         expect(response).to redirect_to(pending_admin_membership_submissions_path)
       end
     end
