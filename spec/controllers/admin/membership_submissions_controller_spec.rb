@@ -20,7 +20,7 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
         expect(response).to redirect_to(admin_path)
       end
 
-      it "does set flash/info" do
+      it "sets flash/info" do
         expect(flash[:info]).to match(/submissions/i)
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe Admin::MembershipSubmissionsController, type: :controller do
         get :pending
       end
 
-      it "does not sets flash/info and returns first membership submission" do
+      it "does not set flash/info and returns first membership submission" do
         expect(flash[:info]).to be_blank
         expect(SlackMembershipSubmission.find_by_email('johndoe@email.com')).to eq @slack_membership_1
       end
