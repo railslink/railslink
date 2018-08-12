@@ -5,6 +5,7 @@ $notification-padding: 0.75rem 2.5rem 0.75rem 1.5rem;
 
 @import url("//fonts.googleapis.com/css?family=Cabin");
 @import "bulma";
+@import "bulma-overrides";
 
 body.c-home {
   hr { margin: 0 15%; }
