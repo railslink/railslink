@@ -39,7 +39,7 @@ class SlackMembershipSubmission < ApplicationRecord
       false
     end
   rescue Slack::Web::Api::Errors::SlackError => e
-    if %w[already_invited already_in_team].include?(e.message)
+    if %w[already_invited already_in_team sent_recently].include?(e.message)
       approved!
       return true
     end
