@@ -14,7 +14,7 @@ Official website of Ruby on Rails Link.
 
 - Ruby 2.4.4
 - PostgreSQL 10.x
-- Redis
+- Redis 4.x
 
 ### Setup
 
