@@ -16,10 +16,15 @@ Official website of Ruby on Rails Link.
 - PostgreSQL 10.x
 - Redis 4.x
 
-### Setup
+### Contributing
 
-  - Acquire the missing ENV vars in `.env` from another Slack admin or the Heroku
-    project.  Add them to `.env.local`.
+  - Join the Railslink-dev Slack team by requesting an invitation (we'll need
+    your email) in the official #railslink-dev channel.
+
+  - Ask an existing member of Railslink-dev to make you an admin.
+
+  - Acquire the missing Railslink-dev ENV vars in `.env` from another Slack
+    member (ie. phallstrom).  Add them to `.env.local`.
 
   - Install gems: `bundle install`
 
@@ -32,3 +37,6 @@ Official website of Ruby on Rails Link.
   - Optionally sync Slack users: `rake slack:sync:users`
 
   - Start the Rails server: `rails s`
+
+  - Visit http://localhost:3000/admin and verify you can login and see the
+    admin dashboard.
