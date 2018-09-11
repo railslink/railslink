@@ -30,6 +30,7 @@ gem 'slim-rails'                                                   # slim templa
 gem "sprockets", "~> 3.7.2"                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
 gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
 gem 'uglifier', '>= 1.3.0'                                         # compressor for javascript assets
+gem 'ffi', '>= 1.9.24'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'                                      # testing framework

@@ -70,7 +70,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
-    ffi (1.9.23)
+    ffi (1.9.25)
     gli (2.17.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -249,6 +249,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails (~> 4.8)
   fakeredis (~> 0.7.0)
+  ffi (>= 1.9.24)
   listen (>= 3.0.5, < 3.2)
   oj (~> 2.16.1)
   omniauth (= 1.8.1)
@@ -279,4 +280,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
