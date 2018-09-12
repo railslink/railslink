@@ -42,6 +42,7 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'                                    # a debugging tool for ruby on rails applications
   gem 'listen', '>= 3.0.5', '< 3.2'                                # listens to file modifications and notifies you about the changes
+  gem 'ffi', '~> 1.9.24'                                           # a foreign function interface ruby implementation
 end
 
 group :test do
