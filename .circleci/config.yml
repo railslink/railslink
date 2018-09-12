@@ -1,8 +1,6 @@
 version: 2
-jobs:
-  build:
-    parallelism: 3
-    docker:
+defaults: &defaults
+  docker:
       - image: circleci/ruby:2.4.4-node
         environment:
           BUNDLE_JOBS: 3
@@ -16,6 +14,10 @@ jobs:
           POSTGRES_USER: railslink
           POSTGRES_DB: ruby_on_rails_link_test
           POSTGRES_PASSWORD: ""
+jobs:
+  build:
+    parallelism: 3
+    <<: *defaults
     steps:
       - checkout
 
@@ -77,3 +79,46 @@ jobs:
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
+  security:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Reinstall bundler gem
+          command: gem install bundler
+
+      - restore_cache:
+          keys:
+            - railslink-bundle-{{ checksum "Gemfile.lock" }}
+            - railslink-bundle-
+
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+
+      - save_cache:
+          key: railslink-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Install bundler-audit
+          command: gem install bundler-audit
+      - run:
+          name: Run bundle-audit
+          command: bundle audit check --update
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
+  nightly:
+    jobs:
+      - security
+    triggers:
+      - schedule:
+        cron: "0 0 * * *"
+        filters:
+          branches:
+            only:
+              - master
