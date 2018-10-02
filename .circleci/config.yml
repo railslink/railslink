@@ -1,3 +1,4 @@
+---
 version: 2
 defaults: &defaults
   docker:
@@ -114,11 +115,12 @@ workflows:
       - build
   nightly:
     jobs:
-      - security
+      - security:
+          filters:
+            branches:
+              only:
+                - master
     triggers:
       - schedule:
-        cron: "0 0 * * *"
-        filters:
-          branches:
-            only:
-              - master
+          cron: "0 0 * * *"
+        
