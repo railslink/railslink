@@ -115,12 +115,12 @@ workflows:
       - build
   nightly:
     jobs:
-      - security:
+      - security
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
                 - master
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
         
