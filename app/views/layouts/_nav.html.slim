@@ -4,8 +4,11 @@
       .navbar-item
         = image_tag "railslink-icon.png", alt: "", id: "logo"
         b= configatron.app_name
+      a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button"
+        span aria-hidden="true"
+        span aria-hidden="true"
+        span aria-hidden="true"
 
-    / TODO Make this hamburger/mobile - https://bulma.io/documentation/components/navbar/#navbar-burger
     .navbar-menu.is-active
       .navbar-start
         - if in_admin_space?
