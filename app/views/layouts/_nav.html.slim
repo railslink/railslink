@@ -4,12 +4,12 @@
       .navbar-item
         = image_tag "railslink-icon.png", alt: "", id: "logo"
         b= configatron.app_name
-      a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button"
+      a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbar-menu" role="button"
         span aria-hidden="true"
         span aria-hidden="true"
         span aria-hidden="true"
 
-    .navbar-menu.is-active
+    #navbar-menu.navbar-menu
       .navbar-start
         - if in_admin_space?
           = link_to "Users", "#TODO", class: "navbar-item"
