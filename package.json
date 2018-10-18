@@ -1,5 +1,8 @@
 {
   "name": "ruby_on_rails_link",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "stylelint": "^9.6.0",
+    "stylelint-config-standard": "^18.2.0"
+  }
 }

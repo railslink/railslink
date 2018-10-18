@@ -1,5 +1,6 @@
 // Safari will lighten whatever color is set making it difficult to read,
 // this sets it back to the bulma default.
-.input[disabled], .textarea[disabled] {
+.input[disabled],
+.textarea[disabled] {
   -webkit-text-fill-color: #7a7a7a;
 }
