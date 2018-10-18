@@ -43,21 +43,25 @@ jobs:
           paths:
             - vendor/bundle
 
-      # # Only necessary if app uses webpacker or yarn in some other way
-      # - restore_cache:
-      #     keys:
-      #       - railslink-yarn-{{ checksum "yarn.lock" }}
-      #       - railslink-yarn-
+      # Restore yarn cache
+      - restore_cache:
+          keys:
+            - railslink-yarn-{{ checksum "yarn.lock" }}
+            - railslink-yarn-
 
-      # - run:
-      #     name: Yarn Install
-      #     command: yarn install --cache-folder ~/.cache/yarn
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
 
-      # # Store yarn / webpacker cache
-      # - save_cache:
-      #     key: railslink-yarn-{{ checksum "yarn.lock" }}
-      #     paths:
-      #       - ~/.cache/yarn
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: railslink-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Run Stylelint
+          command: ./node_modules/.bin/stylelint -f verbose app/assets/stylesheets
 
       - run:
           name: Wait for DB
