@@ -57,6 +57,7 @@ jobs:
       - save_cache:
           key: railslink-yarn-{{ checksum "yarn.lock" }}
           paths:
+            - ~/.cache/yarn
 
       - run:
           name: Run Stylelint
