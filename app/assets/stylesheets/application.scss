@@ -35,6 +35,18 @@ body > nav {
       }
     }
   }
+
+  &.navbar.is-light {
+    a.navbar-burger {
+      color: #363636;
+      color: $grey-dark;
+      &:hover { color: $primary; }
+    }
+
+    a.navbar-item {
+      &:hover { color: $primary; }
+    }
+  }
 }
 
 footer {
