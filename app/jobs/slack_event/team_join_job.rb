@@ -81,6 +81,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
     )
   end
 
+  # UAS76M3HN = Kate Donaldson (kate)
   def welcome_text(user:)
     %Q(
       *Welcome to #{configatron.app_name} #{user[:real_name] || user[:name]} :wave:*
@@ -97,7 +98,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
       6. See #1.
 
       Be sure to browse all the public channels to see any topics and conversations that might be interesting to you.  We also have private channels for various interests and communities. Here's contact info if you want an invite to the following private channels:
-      - #women-in-tech: @katelovescode
+      - #women-in-tech: <@UAS76M3HN>
 
       If you're new to Ruby and/or Rails checkout <https://github.com/railslink/resources/wiki|our wiki> for resources to get started.
 
