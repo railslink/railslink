@@ -96,7 +96,8 @@ class SlackEvent::TeamJoinJob < ApplicationJob
       5. Wrap code in backticks. <https://slack.zendesk.com/hc/en-us/article_attachments/204977928/backticks.png|Example here>.
       6. See #1.
 
-      Be sure to browse all the public channels to see any topics and conversations that might be interesting to you.
+      Be sure to browse all the public channels to see any topics and conversations that might be interesting to you.  We also have private channels for various interests and communities. Here's contact info if you want an invite to the following private channels:
+      - #women-in-tech: @katelovescode
 
       If you're new to Ruby and/or Rails checkout <https://github.com/railslink/resources/wiki|our wiki> for resources to get started.
 
