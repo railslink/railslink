@@ -2,19 +2,21 @@
 # See https://api.slack.com/events/member_joined_channel
 #
 # Example payload:
-# {"token"=>"xxxxx",
-#  "team_id"=>"T05052K3Q",
-#  "api_app_id"=>"A9MR2EQDQ",
-#  "event"=> {
-#    "type": "member_joined_channel",
-#    "user": "W06GH7XHN",
-#    "channel": "G0698JE0H",
-#    "channel_type": "C",
-#    "team": "T8MPF7EHL"},
-#  "type"=>"event_callback",
-#  "event_id"=>"EvAQE3M1PD",
-#  "event_time"=>1526446776,
-#  "authed_users"=>["U054D8V3L"]}
+#
+# {"token"=>"xxxx",
+# "team_id"=>"TCF0ZD3LL",
+# "api_app_id"=>"ACELG3B4H",
+# "event"=>{
+#   "type"=>"member_joined_channel",
+#   "user"=>"UCFC0B6E9",
+#   "channel"=>"CDPS07TPV",
+#   "channel_type"=>"C",
+#   "team"=>"TCF0ZD3LL",
+#   "event_ts"=>"1540669673.000100"},
+# "type"=>"event_callback",
+# "event_id"=>"EvDRB8G2P8",
+# "event_time"=>1540669673,
+# "authed_users"=>["UCFC0B6E9"]}
 #
 class SlackEvent::MemberJoinedChannelJob < ApplicationJob
 
@@ -23,7 +25,7 @@ class SlackEvent::MemberJoinedChannelJob < ApplicationJob
 
   def perform(options = {})
     @options = options.with_indifferent_access
-    event = options[:event].with_indifferent_access
+    event = @options[:event].with_indifferent_access
 
     # It would be highly odd for the channel not to exist,
     # since the only way this event is triggered is via channel-join
