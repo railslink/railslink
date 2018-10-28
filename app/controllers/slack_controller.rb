@@ -1,5 +1,6 @@
 class SlackController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :publish_event
   before_action :verify_token!
 
   # see https://api.slack.com/events-api
@@ -25,6 +26,12 @@ class SlackController < ApplicationController
   end
 
   protected
+
+  def publish_event
+    REDIS.publish(:slack_events, slack_params.to_json)
+  rescue StandardError => e
+    Rollbar.error(e, :slack_params => slack_params.to_hash)
+  end
 
   def verify_token!
     return if slack_params[:token] == ENV["SLACK_VERIFICATION_TOKEN"]
