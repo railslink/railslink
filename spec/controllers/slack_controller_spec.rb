@@ -2,6 +2,20 @@ require 'rails_helper'
 
 RSpec.describe SlackController, type: :controller do
   describe "POST #event" do
+    describe "publishing events to Redis" do
+      it "publishes events even if token is invalid" do
+        expect(REDIS).to receive(:publish).with(:slack_events, {token: "invalid"}.to_json)
+        post :event, params: {slack: {token: "invalid"}}
+      end
+
+      it "sends errors to Rollbar" do
+        error = StandardError.new("oops")
+        allow(REDIS).to receive(:publish).and_raise(error)
+        expect(Rollbar).to receive(:error).with(error, slack_params: {"foo" => "bar"})
+        post :event, params: {slack: {foo: "bar"}}
+      end
+    end
+
     describe "when token is invalid" do
       it "returns http forbidden" do
         post :event, params: {slack: {token: "invalid"}}
