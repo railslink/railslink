@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/admin", to: "admin/dashboard#index", as: :admin
 
   namespace :admin do
-    resources "users", only: [:index]
+    resources "users", only: [:index, :show]
     resources "channels", only: [:index]
 
     resources "membership_submissions" do

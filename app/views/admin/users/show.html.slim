@@ -1,0 +1,41 @@
+section.section
+  .columns
+    .column
+      h1.title #{@user.first_name || @user.last_name ? @user.name + " - " : ""} #{@user.email}
+
+  .columns
+    .column
+      .field
+        label.label Name
+        .control
+          input.input[type="text" disabled value=@user.name]
+
+      .field
+        label.label Email
+        .control
+          input.input[type="email" disabled value=@user.email]
+
+      .field
+        label.label Locale
+        .control
+          input.input[type="text" disabled value=@user.locale]
+
+      .field
+        label.label Timezone
+        .control
+          input.input[type="text" disabled value=@user.tz]
+    
+    .column
+      .field
+        label.label Deleted #{@user.is_deleted ? "✓" : ""}
+
+      .field
+        label.label Admin #{@user.is_admin ? "✓" : ""}
+
+      .field
+        label.label Bot #{@user.is_bot ? "✓" : ""}
+
+      .field
+        label.label Last Message At
+        .control
+          input.input[type="text" disabled value=@user.last_message_at]
