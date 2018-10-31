@@ -12,6 +12,7 @@ section.section
             th Created At
             th Email
             th Timezone
+            th
         tbody
           - @users.each do |user|
             tr[class = (user.is_deleted? ? "has-text-grey-light" : "")]
@@ -21,3 +22,4 @@ section.section
               td= user.created_at.to_date.to_s(:db)
               td= user.email
               td= user.tz
+              td= link_to "View", admin_user_path(user.id), class: "button"
