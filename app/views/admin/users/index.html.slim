@@ -1,0 +1,23 @@
+section.section
+  .columns
+    .column
+      h1.title Slack Users
+
+      table.table.is-hoverable
+        thead
+          tr
+            th Admin
+            th First Name
+            th Last Name
+            th Created At
+            th Email
+            th Timezone
+        tbody
+          - @users.each do |user|
+            tr[class = (user.is_deleted? ? "has-text-grey-light" : "")]
+              td= (user.is_admin ? "✓" : "")
+              td= user.first_name
+              td= user.last_name
+              td= user.created_at.to_date.to_s(:db)
+              td= user.email
+              td= user.tz
