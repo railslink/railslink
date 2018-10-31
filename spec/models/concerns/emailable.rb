@@ -1,5 +1,5 @@
 RSpec.shared_examples "a emailable concern" do
-  it { should validate_uniqueness_of(:email) }
+  it { should validate_uniqueness_of(:email).case_insensitive }
 
   describe "#sanitize_email" do
     it "lower cases the email" do
