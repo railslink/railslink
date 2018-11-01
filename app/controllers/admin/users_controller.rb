@@ -8,6 +8,8 @@ class Admin::UsersController < AdminController
       :last_name,
       :email
     )
+
+    @users = SlackUserPresenter.from_collection(@users)
   end
 
   def show

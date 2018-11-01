@@ -16,7 +16,7 @@ section.section
         tbody
           - @users.each do |user|
             tr[class = (user.is_deleted? ? "has-text-grey-light" : "")]
-              td= (user.is_admin ? "✓" : "")
+              td= user.admin_checkmark
               td= user.first_name
               td= user.last_name
               td= user.created_at.to_date.to_s(:db)
