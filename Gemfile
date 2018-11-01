@@ -24,7 +24,7 @@ gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css 
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
 gem 'rails-assets-fontawesome', source: 'https://rails-assets.org' # iconic svg, font, and css toolkit
 gem 'redis', '~> 4.0.1'                                            # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
-gem 'rollbar', '~> 2.16.3'                                         # exception tracking for ruby
+gem 'rollbar', '~> 2.18.0'                                         # exception tracking for ruby
 gem 'sass-rails', '~> 5.0'                                         # ruby on rails stylesheet engine for sass
 gem 'slack-ruby-client', '~> 0.11'                                 # client for the slack web and real time messaging apis
 gem 'slim-rails'                                                   # slim templates generator for rails 3, 4 and 5
