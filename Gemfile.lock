@@ -163,6 +163,10 @@ GEM
     redis (4.0.2)
     rollbar (2.18.0)
       multi_json
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -222,6 +226,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stub_env (1.0.4)
+      rspec (>= 2.0, < 4.0)
     sucker_punch (2.1.1)
       concurrent-ruby (~> 1.0)
     temple (0.8.0)
@@ -276,6 +282,7 @@ DEPENDENCIES
   slack-ruby-client (~> 0.11)
   slim-rails
   sprockets (~> 3.7.2)
+  stub_env (~> 1.0, >= 1.0.4)
   sucker_punch (~> 2.0)
   tzinfo-data
   uglifier (>= 1.3.0)
@@ -285,4 +292,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.5
+   1.17.1
