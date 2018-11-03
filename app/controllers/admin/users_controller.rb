@@ -9,6 +9,7 @@ class Admin::UsersController < AdminController
       :email
     )
 
+    @pagy, @users = pagy(@users)
     @users = SlackUserPresenter.from_collection(@users)
   end
 
