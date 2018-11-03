@@ -18,6 +18,7 @@ gem 'countries', '~> 2.1.4'                                        # all sorts o
 gem 'marginalia', '~> 1.6.0'                                       # attach comments to your activerecord queries
 gem 'oj', '~> 2.16.1'                                              # fast json parser and object serializer
 gem 'pg', '>= 0.18', '< 2.0'                                       # use postgresql as the database
+gem 'pagy', '~> 0.21.0'                                            # pagination ruby gem
 gem 'puma', '~> 3.7'                                               # use puma as the app server
 gem 'rack-attack', '~> 5.2.0'                                      # rack middleware for blocking & throttling abusive requests
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css framework based on flexbox

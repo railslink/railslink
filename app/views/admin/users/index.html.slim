@@ -23,3 +23,5 @@ section.section
               td= user.email
               td= user.tz
               td= link_to "View", admin_user_path(user.id), class: "button"
+
+      == pagy_nav_bulma(@pagy)
