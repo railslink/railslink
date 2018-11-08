@@ -60,6 +60,9 @@ RSpec.configure do |config|
   
   # Rspec helpers.
   config.include Helpers
+  config.include StubEnv::Helpers
+
+  config.before(:all) { create_general_slack_channel }
 end
 
 Shoulda::Matchers.configure do |config|

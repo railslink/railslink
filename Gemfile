@@ -51,6 +51,7 @@ end
 group :test do
   gem 'fakeredis', '~> 0.7.0'                                      # fake (in-memory) driver for redis-rb
   gem 'shoulda', '~> 3.5'                                          # makes tests easy on the fingers and eyes
+  gem 'stub_env', '~> 1.0', '>= 1.0.4'                             # helper to stub ENV variables in Rspec tests
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # windows does not include zoneinfo files, so bundle the tzinfo-data gem
