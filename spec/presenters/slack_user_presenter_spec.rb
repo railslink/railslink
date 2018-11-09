@@ -40,4 +40,40 @@ RSpec.describe SlackUserPresenter do
       end
     end
   end
+
+  describe '#deleted_checkmark' do
+    context 'when user is deleted' do
+      let(:slack_user) { double('is_deleted?' => true) }
+
+      it 'returns ✓' do
+        expect(subject.deleted_checkmark).to eq '✓'
+      end
+    end
+
+    context 'when user is active' do
+      let(:slack_user) { double('is_deleted?' => false) }
+
+      it 'returns an empty string' do
+        expect(subject.deleted_checkmark).to eq ''
+      end
+    end
+  end
+
+  describe '#bot_checkmark' do
+    context 'bot user' do
+      let(:slack_user) { double('is_bot?' => true) }
+
+      it 'returns ✓' do
+        expect(subject.bot_checkmark).to eq '✓'
+      end
+    end
+
+    context 'human user' do
+      let(:slack_user) { double('is_bot?' => false) }
+
+      it 'returns an empty string' do
+        expect(subject.bot_checkmark).to eq ''
+      end
+    end
+  end
 end
