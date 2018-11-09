@@ -14,6 +14,7 @@ class Admin::UsersController < AdminController
   end
 
   def show
-    @user = SlackUser.find(params[:id])
+    user = SlackUser.find(params[:id])
+    @user = SlackUserPresenter.new(user)
   end
 end
