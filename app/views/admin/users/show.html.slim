@@ -1,7 +1,7 @@
 section.section
   .columns
     .column
-      h1.title #{@user.first_name || @user.last_name ? @user.name + " - " : ""} #{@user.email}
+      h1.title= @user.name_with_email
 
   .columns
     .column

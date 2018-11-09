@@ -22,4 +22,22 @@ RSpec.describe SlackUserPresenter do
       end
     end
   end
+
+  describe '#name_with_email' do
+    context 'name is blank' do
+      let(:slack_user) { double('name' => '', 'email' => 'john@doe.com') }
+
+      it 'returns the email address' do
+        expect(subject.name_with_email).to eq 'john@doe.com'
+      end
+    end
+
+    context 'name is present' do
+      let(:slack_user) { double('name' => 'John', 'email' => 'john@doe.com') }
+
+      it 'returns name and email address' do
+        expect(subject.name_with_email).to eq 'John - john@doe.com'
+      end
+    end
+  end
 end
