@@ -27,13 +27,13 @@ section.section
     
     .column
       .field
-        label.label Deleted #{@user.is_deleted ? "✓" : ""}
+        label.label Deleted #{@user.deleted_checkmark}
 
       .field
-        label.label Admin #{@user.is_admin ? "✓" : ""}
+        label.label Admin #{@user.admin_checkmark}
 
       .field
-        label.label Bot #{@user.is_bot ? "✓" : ""}
+        label.label Bot #{@user.bot_checkmark}
 
       .field
         label.label Last Message At
