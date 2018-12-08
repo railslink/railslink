@@ -1,11 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Admin::ChannelsController, type: :controller do
-
-  describe "GET #index" do
+RSpec.describe "Channels", type: :request do
+  describe "index page" do
     context "guest user" do
       it "redirects to /auth/slack" do
-        get :index
+        get "/admin/channels"
         expect(response).to redirect_to("/auth/slack?require=admin")
       end
     end
@@ -13,10 +12,9 @@ RSpec.describe Admin::ChannelsController, type: :controller do
     context "admin user" do
       it "returns http success" do
         authorize_admin!
-        get :index
+        get "/admin/channels"
         expect(response).to have_http_status(200)
       end
     end
   end
-
 end
