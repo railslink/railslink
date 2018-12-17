@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   namespace :slack do
     post "event"
   end
+  
+  post "/slack/:command", to: "slack#command"
 
   get "/login"                   , to: "sessions#new"     , as: :login
   get "/logout"                  , to: "sessions#destroy" , as: :logout

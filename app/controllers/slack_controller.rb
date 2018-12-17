@@ -1,7 +1,7 @@
 class SlackController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :publish_event
-  before_action :verify_token!
+  before_action :publish_event, only: [:event]
+  before_action :verify_token!, only: [:event]
 
   # see https://api.slack.com/events-api
   # see https://api.slack.com/events/url_verification
@@ -25,7 +25,19 @@ class SlackController < ApplicationController
     head :ok
   end
 
+  def command
+    list_admins if params[:command] == "admins"
+  end
+
   protected
+
+  def list_admins
+    client = Slack::Web::Client.new
+    admins = []
+    response = client.users_list.members
+    response.map { |user| admins << user.name if user.is_admin }
+    render json: admins
+  end
 
   def publish_event
     REDIS.publish(:slack_events, slack_params.to_json)
