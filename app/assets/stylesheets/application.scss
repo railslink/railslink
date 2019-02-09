@@ -54,6 +54,11 @@ body > nav {
     margin: 1rem 0;
   }
 
+  img {
+    filter: grayscale(1);
+    transition-duration: 0.4s;
+  }
+
   .card:hover img {
     filter: none;
     transform: scale(1.02);
@@ -61,11 +66,6 @@ body > nav {
 
   .card-image {
     padding: 1rem 0;
-  }
-
-  img {
-    filter: grayscale(1);
-    transition-duration: 0.4s;
   }
 }
 

@@ -4,19 +4,21 @@ footer.container
 
       - unless in_admin_space?
         p
-          | Have a question? Read our 
-          = link_to 'Resources Wiki', 'https://github.com/railslink/resources/wiki', target: 'new'
-          | , or ask us on 
-          = link_to 'Twitter', 'https://twitter.com/railslink', target: 'new'
+          | Have a question? Read our
+          = link_to ' Resources Wiki', 'https://github.com/railslink/resources/wiki', target: 'new'
+          | , Contact the
+          = link_to ' Admins', admin_members_path
+          | , or ask us on
+          = link_to ' Twitter', 'https://twitter.com/railslink', target: 'new'
           | .
         .links
           a href="https://twitter.com/railslink" target="_new"
             span.icon.is-large: i class="fab fa-twitter fa-2x"
-          a href="https://www.facebook.com/groups/railslink/" target="_new" 
+          a href="https://www.facebook.com/groups/railslink/" target="_new"
             span.icon.is-large: i class="fab fa-facebook fa-2x"
-          a href="https://github.com/railslink/railslink" target="_new" 
+          a href="https://github.com/railslink/railslink" target="_new"
             span.icon.is-large: i class="fab fa-github fa-2x"
-          a href="https://www.producthunt.com/tech/rubyonrails-link" target="_new" 
+          a href="https://www.producthunt.com/tech/rubyonrails-link" target="_new"
             span.icon.is-large: i class="fab fa-product-hunt fa-2x"
 
       .copyright ©#{Time.zone.now.year} #{configatron.app_name}
