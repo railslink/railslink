@@ -1,0 +1,22 @@
+main.site-admins
+  section.section
+    header.has-text-centered
+      h1.is-size-1 Admin Members
+      p You can contact any of the following administrators
+
+    main.container
+      .columns.is-multiline
+        - @admin_members.each do |member|
+          .column.is-12-mobile.is-6-tablet.is-4-desktop
+            .card.has-text-centered
+              .card-image = image_tag member.data["profile"]["image_192"]
+
+              .card-content
+                h3.title
+                  = member.data["profile"]["real_name"]
+
+              .card-footer
+                .card-footer-item
+                  = link_to "mailto:#{member.data['profile']['email']}", class: "button is-fullwidth is-medium" do
+                    | Contact &nbsp;
+                    i.fas.fa-envelope
