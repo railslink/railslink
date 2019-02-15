@@ -14,6 +14,8 @@ class SlackUser < ApplicationRecord
   scope :bots, -> { where(is_bot: true) }
   scope :human, -> { where(is_bot: false) }
   scope :available, -> { extant.human }
+  scope :active, -> { available.where.not(last_message_at: nil) }
+  scope :sort_by_recent_activity, -> { order(last_message_at: :desc) }
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user = find_or_create_from_api_response(auth_hash.extra.user_info.user)
