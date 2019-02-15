@@ -7,7 +7,7 @@ main.site-admins
     main.container
       .columns.is-multiline
         - @admin_members.each do |member|
-          .column.is-12-mobile.is-6-tablet.is-4-desktop
+          .column.is-12-mobile.is-6-tablet.is-4-desktop.is-equal-height
             .card.has-text-centered
               .card-image = image_tag member.data["profile"]["image_192"]
 

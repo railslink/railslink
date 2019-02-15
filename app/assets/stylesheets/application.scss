@@ -59,6 +59,16 @@ body > nav {
     transition-duration: 0.4s;
   }
 
+  .is-equal-height {
+    @media screen and (min-width: 769px) {
+      display: flex;
+
+      .card {
+        width: 100%;
+      }
+    }
+  }
+
   .card:hover img {
     filter: none;
     transform: scale(1.02);
