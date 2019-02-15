@@ -2,7 +2,7 @@ main.site-admins
   section.section
     header.has-text-centered
       h1.is-size-1 Admin Members
-      p You can contact any of the following administrators
+      p You can contact any of the following administrators on slack
 
     main.container
       .columns.is-multiline
@@ -14,9 +14,7 @@ main.site-admins
               .card-content
                 h3.title
                   = member.data["profile"]["real_name"]
-
-              .card-footer
-                .card-footer-item
-                  = link_to "mailto:#{member.data['profile']['email']}", class: "button is-fullwidth is-medium" do
-                    | Contact &nbsp;
-                    i.fas.fa-envelope
+                - if member.data["profile"]["display_name"].present?
+                  span
+                    | @
+                    = member.data["profile"]["display_name"]
