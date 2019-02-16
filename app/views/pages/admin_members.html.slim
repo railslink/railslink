@@ -1,8 +1,8 @@
-main.site-admins
+main.admin-members
   section.section
     header.has-text-centered
       h1.is-size-1 Admin Members
-      p You can contact any of the following administrators on slack
+      p You can contact any of the following administrators on Slack
 
     main.container
       .columns.is-multiline
@@ -13,8 +13,6 @@ main.site-admins
 
               .card-content
                 h3.title
-                  = member.data["profile"]["real_name"]
-                - if member.data["profile"]["display_name"].present?
-                  span
-                    | @
-                    = member.data["profile"]["display_name"]
+                  = member.name
+                = link_to "@#{member.username}", "slack://user?team=#{ENV["SLACK_TEAM"]}&id=#{member.uid}", class: "has-text-primary"
+
