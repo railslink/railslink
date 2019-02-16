@@ -11,6 +11,7 @@
 
     #navbar-menu.navbar-menu
       .navbar-start
+        = link_to "Home", root_path, class: "navbar-item"
         - if in_admin_space?
           = link_to "Users", admin_users_path, class: "navbar-item"
           = link_to "Channels", admin_channels_path, class: "navbar-item"
