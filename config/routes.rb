@@ -31,4 +31,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get "/admin_members", to: "pages#admin"
 end

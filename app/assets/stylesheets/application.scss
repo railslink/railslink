@@ -49,6 +49,40 @@ body > nav {
   }
 }
 
+.site-admins {
+  header {
+    margin: 1rem 0;
+  }
+
+  img {
+    filter: grayscale(1);
+    transition-duration: 0.4s;
+  }
+
+  .is-equal-height {
+    @media screen and (min-width: 769px) {
+      display: flex;
+
+      .card {
+        width: 100%;
+      }
+    }
+  }
+
+  .card:hover img {
+    filter: none;
+    transform: scale(1.02);
+  }
+
+  .card-image {
+    padding: 1rem 0;
+  }
+
+  .title {
+    margin: 0;
+  }
+}
+
 footer {
   border-top: 1px solid $grey-lighter;
   margin-top: 1rem;
