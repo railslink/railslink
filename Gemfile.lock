@@ -271,7 +271,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rack-attack (~> 5.2.0)
-  rails (~> 5.1.6.1)
+  rails (~> 5.1.6.2)
   rails-assets-bulma!
   rails-assets-chartjs!
   rails-assets-fontawesome!
