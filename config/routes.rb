@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   end
 
   get "/admin_members", to: "pages#admin_members"
+  get "/code_of_conduct", to: "pages#code_of_conduct"
 end
