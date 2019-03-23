@@ -46,4 +46,11 @@ class SlackMembershipSubmission < ApplicationRecord
 
     raise e
   end
+
+  def ip_address_location
+    return if ip_address.nil?
+    ii = IpInfo.new(ip_address.to_s)
+    return unless ii.successful?
+    [ii.city, ii.region, ii.country].join(", ")
+  end
 end

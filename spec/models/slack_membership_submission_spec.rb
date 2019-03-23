@@ -44,4 +44,22 @@ RSpec.describe SlackMembershipSubmission, type: :model do
   describe "#approve_and_invite!" do
     pending
   end
+
+  describe "#ip_address_location" do
+    it "returns nil if ip_address is nil" do
+      subject.ip_address = nil
+      expect(subject.ip_address_location).to eq nil
+    end
+
+    it "returns nil if ip_address is private" do
+      subject.ip_address = "127.0.0.1"
+      expect(subject.ip_address_location).to eq nil
+    end
+
+    it "returns location string if ip_address is valid" do
+      subject.ip_address = "73.11.237.17"
+      expect(subject.ip_address_location).to eq "Olympia, WA, United States"
+    end
+
+  end
 end

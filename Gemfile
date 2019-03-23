@@ -41,6 +41,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.8'                                # provides integration between factory_bot and rails
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]              # ruby debugger
   gem 'pry-rails'                                                  # use pry as your rails console
+  gem 'vcr', '~> 4.0'                                              # record test suite's http interactions and replay them during future test runs
+  gem 'webmock', '~> 3.5.1'                                        # allows stubbing http requests and setting expectations on http requests
 end
 
 group :development do

@@ -29,7 +29,7 @@ RSpec.describe "Membership submissions", type: :request do
     end
 
     describe "submission is valid" do
-      it "creates the record" do
+      before do
         post "/join-now", params: {
           slack_membership_submission: {
             email: "john@doe.com",
@@ -38,10 +38,18 @@ RSpec.describe "Membership submissions", type: :request do
             introduction: "Once upon a time..."
           }
         }
+      end
 
+      it "creates the record" do
         expect(
           SlackMembershipSubmission.find_by(email: "john@doe.com")
         ).to be_present
+      end
+
+      it "sets the ip address client's ip" do
+        expect(
+          SlackMembershipSubmission.find_by(email: "john@doe.com").ip_address.to_s
+        ).to eq "127.0.0.1"
       end
     end
   end
