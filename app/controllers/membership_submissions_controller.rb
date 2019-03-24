@@ -7,6 +7,7 @@ class MembershipSubmissionsController < ApplicationController
     redirect_to root_path and return if submission_params.key?(:fax)
 
     @submission = SlackMembershipSubmission.new(submission_params)
+    @submission.ip_address = request.remote_ip
 
     if @submission.save
       flash[:info] = "Thanks! Look for an email from us in the next couple of days."

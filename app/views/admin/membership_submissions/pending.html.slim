@@ -19,7 +19,9 @@ section.section
         label.label Location
         .control
           input.input[type="text" disabled value=@submission.location]
-
+        .help
+          = @submission.ip_address_location
+          
       .field
         label.label Created At
         .control

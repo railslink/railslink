@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ip-api.com/json/73.11.237.17
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 23 Mar 2019 22:06:45 GMT
+      Content-Length:
+      - '354'
+    body:
+      encoding: UTF-8
+      string: '{"as":"AS7922 Comcast Cable Communications, LLC","city":"Olympia","country":"United
+        States","countryCode":"US","isp":"Comcast Cable Communications, LLC","lat":46.9498,"lon":-123.0212,"org":"Comcast
+        Cable Communications, LLC","query":"73.11.237.17","region":"WA","regionName":"Washington","status":"success","timezone":"America/Los_Angeles","zip":"98512"}'
+    http_version: 
+  recorded_at: Sat, 23 Mar 2019 22:06:45 GMT
+recorded_with: VCR 4.0.0
