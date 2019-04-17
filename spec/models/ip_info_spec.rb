@@ -1,6 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe IpInfo, type: :model do
+  context "exceptions" do
+    let(:subject) { described_class.new("73.11.237.17") }
+
+    it "is unsuccessful when the network times out" do
+      allow(Net::HTTP).to receive(:get).and_raise(Net::OpenTimeout)
+      expect(subject.successful?).to eq false
+    end
+
+    it "is unsuccessful when the json is invalid" do
+      allow(Net::HTTP).to receive(:get).and_return("") # invalid JSON
+      expect(subject.successful?).to eq false
+    end
+
+    it "is unsuccessful when the timeout is reached" do
+      allow(Net::HTTP).to receive(:get).and_raise(Timeout::Error)
+      expect(subject.successful?).to eq false
+    end
+  end
+
   context "invalid ip addresses" do
     let(:subject) { described_class.new("invalid") }
 

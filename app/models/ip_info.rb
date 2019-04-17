@@ -4,7 +4,11 @@
 class IpInfo
   def initialize(ip_address)
     @ip_address = ip_address
-    @info = JSON.parse(Net::HTTP.get("ip-api.com", "/json/#{@ip_address}"))
+    Timeout::timeout(3) do
+      @info = JSON.parse(Net::HTTP.get("ip-api.com", "/json/#{@ip_address}"))
+    end
+  rescue Net::OpenTimeout, JSON::ParserError, Timeout::Error
+    @info = {}
   end
 
   def successful?
