@@ -13,8 +13,8 @@ Official website of Ruby on Rails Link.
 ### Requirements
 
 - Ruby 2.4.4
-- PostgreSQL 10.x
-- Redis 4.x
+- PostgreSQL 10+
+- Redis 4+
 
 ### Contributing
 
@@ -26,17 +26,31 @@ Official website of Ruby on Rails Link.
   - Acquire the missing Railslink-dev ENV vars in `.env` from another Slack
     member (ie. phallstrom).  Add them to `.env.local`.
 
-  - Install gems: `bundle install`
+  - *Using Docker...*
 
-  - Test the Slack API: `rake slack:test:api`
+    - Start it up: `docker-compose up -d`
 
-  - Create the database: `rake db:setup`
+    - Test the Slack API: `docker-compose run --rm web rake slack:test:api`
 
-  - Sync Slack channels: `rake slack:sync:channels`
+    - Create the database: `docker-compose run --rm web rake db:setup`
 
-  - Optionally sync Slack users: `rake slack:sync:users`
+    - Sync Slack channels: `docker-compose run --rm web rake slack:sync:channels`
 
-  - Start the Rails server: `rails s`
+    - Optionally sync Slack users: `docker-compose run --rm web rake slack:sync:users`
+
+  - *Not using Docker...*
+  
+    - Install gems: `bundle install`
+
+    - Test the Slack API: `rake slack:test:api`
+
+    - Create the database: `rake db:setup`
+
+    - Sync Slack channels: `rake slack:sync:channels`
+
+    - Optionally sync Slack users: `rake slack:sync:users`
+
+    - Start the Rails server: `rails s`
 
   - Visit http://localhost:3000/admin and verify you can login and see the
     admin dashboard.
