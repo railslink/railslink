@@ -12,15 +12,14 @@ class SlackController < ApplicationController
     end
 
     case slack_params.fetch(:event, {})[:type]
+    when "admins"
+      SlackEvent::AdminsJob.perform_later(slack_params.to_hash)
     when "message"
       SlackEvent::MessageJob.perform_later(slack_params.to_hash)
     when "member_joined_channel"
       SlackEvent::MemberJoinedChannelJob.perform_later(slack_params.to_hash)
     when "team_join"
       SlackEvent::TeamJoinJob.perform_later(slack_params.to_hash)
-    when "admins"
-      SlackEvent::AdminsJob.perform_later(slack_params.to_hash)
-      render json: { response_type: "in_channel" }, status: :created
     else
       SlackEvent::UnhandledJob.perform_later(slack_params.to_hash)
     end
