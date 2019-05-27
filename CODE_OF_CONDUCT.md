@@ -61,7 +61,8 @@ clarified by admins.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported by contacting an admin. To get a list of community admins visit
-https://www.rubyonrails.link/admin_members.
+https://www.rubyonrails.link/admin_members or type `/admins` and hit enter in any
+slack channel or DM.
 
 **Please include the following information in every report:**
 

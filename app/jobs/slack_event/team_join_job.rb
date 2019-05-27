@@ -88,7 +88,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
 
       My name is RBot and I've got a few things to share with you.
 
-      *We don't have many rules, but we do have a few:*
+      Please take a look at our full <https://www.rubyonrails.link/code_of_conduct|code of conduct>, and keep the following Slack ettiquette ideas in mind:
 
       1. Be kind.
       2. Don't use `@everyone`, `@channel`, `@group` or `@here`.
@@ -100,7 +100,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
       Be sure to browse all the public channels to see any topics and conversations that might be interesting to you.  We also have private channels for various interests and communities. Here's contact info if you want an invite to the following private channels:
       - #women-in-tech: <@UAS76M3HN>
 
-      If you're new to Ruby and/or Rails checkout <https://github.com/railslink/resources/wiki|our wiki> for resources to get started.
+      If you're new to Ruby and/or Rails checkout <https://github.com/railslink/resources/wiki|our wiki> for resources to get started.  If you need a list of admins, just type `/admins` and hit enter.
 
       We're glad to have you here!
 
