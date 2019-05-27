@@ -18,6 +18,9 @@ class SlackController < ApplicationController
       SlackEvent::MemberJoinedChannelJob.perform_later(slack_params.to_hash)
     when "team_join"
       SlackEvent::TeamJoinJob.perform_later(slack_params.to_hash)
+    when "admins"
+      SlackEvent::AdminsJob.perform_later(slack_params.to_hash)
+      render json: { response_type: "in_channel" }, status: :created
     else
       SlackEvent::UnhandledJob.perform_later(slack_params.to_hash)
     end
@@ -40,6 +43,8 @@ class SlackController < ApplicationController
   end
 
   def slack_params
+    params[:slack][:token] ||= params[:token]
+    params[:slack][:response_url] ||= params[:response_url]
     params.require(:slack).permit!
   end
 end
