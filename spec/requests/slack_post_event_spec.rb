@@ -52,7 +52,7 @@ RSpec.describe "Slack post event", type: :request do
       it "enqueues SlackEvent::AdminsJob" do
         slack_params = {
           token: token,
-          request_url: "fakeurl",
+          response_url: "https://www.fakeurl.com",
           event: {
             type: "admins"
           }
