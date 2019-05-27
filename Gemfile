@@ -15,6 +15,7 @@ gem "omniauth", '= 1.8.1'                                          # omniauth is
 gem "omniauth-slack", '= 2.3.0'                                    # the slack strategy for omniauth and supports the sign in with slack approval flow
 gem 'configatron'                                                  # add multi-environment yaml settings
 gem 'countries', '~> 2.1.4'                                        # all sorts of useful information about every country
+gem 'httparty'                                                     # http requests for callbacks to Slack slash command API
 gem 'kramdown', '~> 2.1.0'                                         # markdown parser
 gem 'marginalia', '~> 1.6.0'                                       # attach comments to your activerecord queries
 gem 'oj', '~> 2.16.1'                                              # fast json parser and object serializer
