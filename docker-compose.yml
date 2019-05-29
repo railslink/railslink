@@ -1,0 +1,37 @@
+version: "3.1"
+
+services:
+
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: db
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: hunter2
+      REDISCLOUD_URL: redis://redis:6379/0
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
+      - bundle:/usr/local/bundle
+    depends_on:
+      - db
+      - redis
+
+  redis:
+    image: redis:alpine
+
+  db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: hunter2
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  bundle: {}
+  pgdata: {} 
