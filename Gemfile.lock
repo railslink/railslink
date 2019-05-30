@@ -279,7 +279,7 @@ DEPENDENCIES
   factory_bot_rails (~> 4.8)
   fakeredis (~> 0.7.0)
   ffi (~> 1.9.24)
-  httparty
+  httparty (~> 0.17.0)
   kramdown (~> 2.1.0)
   listen (>= 3.0.5, < 3.2)
   marginalia (~> 1.6.0)
