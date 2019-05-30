@@ -43,7 +43,7 @@ class SlackController < ApplicationController
 
   def slack_params
     params[:slack][:token] ||= params[:token]
-    params[:slack][:response_url] = params[:response_url] if params[:response_url] && !params[:slack][:response_url]
+    params[:slack][:response_url] ||= params[:response_url]
     params.require(:slack).permit!
   end
 end
