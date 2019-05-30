@@ -35,7 +35,7 @@ class SlackEvent::AdminsJob < ApplicationJob
     @options = options.with_indifferent_access
     message = {
       text: admin_text,
-      response_type: "in_channel"
+      response_type: "ephemeral"
     }
     HTTParty.post(URI::parse(@options[:response_url]), body: message.to_json)
   end
