@@ -57,7 +57,7 @@ class SlackEvent::AdminsJob < ApplicationJob
 
   def admin_string
     admins_string = ""
-    SlackUser.admins.shuffle.each { |admin| admins_string << "#{admin.first_name} #{admin.last_name} | email: #{admin.email} | timezone: #{admin.tz}\n" }
+    SlackUser.admins.shuffle.each { |admin| admins_string << "#{admin.first_name} #{admin.last_name} | email: #{admin.email} | timezone: #{admin.tz} | latest activity: #{admin.last_message_at} \n" }
     admins_string
   end
 
