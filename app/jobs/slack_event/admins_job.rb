@@ -52,7 +52,9 @@ class SlackEvent::AdminsJob < ApplicationJob
   <<~END_OF_TEXT
     *#{configatron.app_name} Admin Members*
     You can contact any of the following administrators on Slack or via email.
+
     #{admin_string}
+
     This information is also available at https://www.rubyonrails.link/admin_members
     END_OF_TEXT
   end
@@ -61,7 +63,7 @@ class SlackEvent::AdminsJob < ApplicationJob
     admins = SlackUser.admins.active.shuffle
     admins.map! do |admin|
       activity = "last active #{ApplicationController.helpers.time_ago_in_words(admin.last_message_at)} ago"
-      " - <@#{admin.uid}>, #{admin.email} _(#{activity})_"
+      " - <@#{admin.uid}> | #{admin.email} _(#{activity})_"
     end
     admins.join("\n")
   end
