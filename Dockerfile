@@ -2,6 +2,7 @@ FROM ruby:2.4.4-alpine
 
 RUN apk add --update --no-cache \
   build-base \
+  less \
   libxml2-dev \
   libxslt-dev \
   nodejs \
