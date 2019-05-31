@@ -48,6 +48,20 @@ RSpec.describe "Slack post event", type: :request do
       end
     end
 
+    describe "event type admins" do
+      it "enqueues SlackEvent::AdminsJob" do
+        slack_params = {
+          token: token,
+          response_url: "https://www.fakeurl.com",
+          event: {
+            type: "admins"
+          }
+        }.with_indifferent_access
+        expect(SlackEvent::AdminsJob).to receive(:perform_later).with(slack_params)
+        post "/slack/event", params: { slack: slack_params }
+      end
+    end
+
     describe "event type message" do
       it "enqueues SlackEvent::MessageJob" do
         slack_params = {

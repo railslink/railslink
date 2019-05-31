@@ -12,6 +12,8 @@ class SlackController < ApplicationController
     end
 
     case slack_params.fetch(:event, {})[:type]
+    when "admins"
+      SlackEvent::AdminsJob.perform_later(slack_params.to_hash)
     when "message"
       SlackEvent::MessageJob.perform_later(slack_params.to_hash)
     when "member_joined_channel"
@@ -40,6 +42,8 @@ class SlackController < ApplicationController
   end
 
   def slack_params
+    params[:slack][:token] = params[:token] if params[:token]
+    params[:slack][:response_url] = params[:response_url] if params[:response_url]
     params.require(:slack).permit!
   end
 end
