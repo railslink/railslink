@@ -50,21 +50,20 @@ class SlackEvent::AdminsJob < ApplicationJob
   # Returns String (or nil)
   def admin_text
   <<~END_OF_TEXT
-    Admins and their contact information:
+    *#{configatron.app_name} Admin Members*
+    You can contact any of the following administrators on Slack or via email.
     #{admin_string}
+    This information is also available at https://www.rubyonrails.link/admin_members
     END_OF_TEXT
   end
 
   def admin_string
-    admins_string = ""
-    SlackUser.admins.shuffle.each do |admin|
-      name = admin.name
-      email = admin.try(:email) ? "email: #{admin.email}" : nil
-      tz = admin.try(:tz) ? "timezone: #{admin.tz}" : nil
-      activity = admin.try(:last_message_at) ? "last activity: #{admin.last_message_at}" : nil
-      admins_string << "#{ [name, email, tz, activity].compact.join(" | ") }\n"
+    admins = SlackUser.admins.active.shuffle
+    admins.map! do |admin|
+      activity = "last active #{ApplicationController.helpers.time_ago_in_words(admin.last_message_at)} ago"
+      " - <@#{admin.uid}>, #{admin.email} _(#{activity})_"
     end
-    admins_string
+    admins.join("\n")
   end
 
 end
