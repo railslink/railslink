@@ -80,7 +80,6 @@ jobs:
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
@@ -110,7 +109,7 @@ jobs:
           command: gem install bundler-audit
       - run:
           name: Run bundle-audit
-          command: bundle audit check --update
+          command: bundle audit check --update --ignore CVE-2015-9284
 
 workflows:
   version: 2
@@ -127,4 +126,3 @@ workflows:
             branches:
               only:
                 - master
-        
