@@ -109,7 +109,7 @@ jobs:
           command: gem install bundler-audit
       - run:
           name: Run bundle-audit
-          command: bundle audit check --update --ignore CVE-2015-9284
+          command: bundle audit check --update --ignore CVE-2015-9284 # this cve deals with a vulnerability for multiple auth providersw, which we do not have
 
 workflows:
   version: 2

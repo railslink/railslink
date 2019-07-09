@@ -6,4 +6,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     team: ENV["SLACK_TEAM"],
     scope: "channels:read, users:read",
     setup: true
+  # if we ever add additional providers, we'll have to look out for csrf vulnerability in CVE-2015-9284
+  # https://github.com/rubysec/ruby-advisory-db/pull/390#issuecomment-509105361
 end
