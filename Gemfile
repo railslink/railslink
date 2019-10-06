@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.4.4"
+ruby "2.5.7"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -18,7 +18,7 @@ gem 'countries', '~> 2.1.4'                                        # all sorts o
 gem 'httparty', '~> 0.17.0'                                        # http requests for callbacks to Slack slash command API
 gem 'kramdown', '~> 2.1.0'                                         # markdown parser
 gem 'marginalia', '~> 1.6.0'                                       # attach comments to your activerecord queries
-gem 'oj', '~> 2.16.1'                                              # fast json parser and object serializer
+gem 'oj', '~> 3.9.2'                                               # fast json parser and object serializer
 gem 'pg', '>= 0.18', '< 2.0'                                       # use postgresql as the database
 gem 'pagy', '~> 0.21.0'                                            # pagination ruby gem
 gem 'puma', '~> 3.7'                                               # use puma as the app server
