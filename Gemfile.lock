@@ -121,7 +121,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    oj (2.16.1)
+    oj (3.9.2)
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
@@ -284,7 +284,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   marginalia (~> 1.6.0)
   nokogiri (~> 1.10.4)
-  oj (~> 2.16.1)
+  oj (~> 3.9.2)
   omniauth (= 1.8.1)
   omniauth-slack (= 2.3.0)
   pagy (~> 0.21.0)
@@ -314,7 +314,7 @@ DEPENDENCIES
   webmock (~> 3.5.1)
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.5.7p206
 
 BUNDLED WITH
-   1.17.1
+   1.17.3
