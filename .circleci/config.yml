@@ -73,6 +73,7 @@ jobs:
 
       # Run rspec in parallel
       - type: shell
+        name: "Run Rspec"
         command: |
           bundle exec rspec --profile 10 \
                             --format RspecJunitFormatter \
@@ -83,6 +84,7 @@ jobs:
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
+
   security:
     <<: *defaults
     steps:
