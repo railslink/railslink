@@ -1,5 +1,7 @@
 FROM ruby:2.5.7-alpine
 
+ENV APP_DIR /usr/src/app
+
 RUN apk add --update --no-cache \
   build-base \
   less \
@@ -11,7 +13,7 @@ RUN apk add --update --no-cache \
   tini \
   tzdata
 
-WORKDIR /usr/src/app
+WORKDIR $APP_DIR
 
 COPY . ./
 
