@@ -13,10 +13,29 @@ Official website of Ruby on Rails Link.
 ### Requirements
 
 - Ruby 2.5.7
-- PostgreSQL 10+
+- PostgreSQL 11+
 - Redis 4+
 
 ### Contributing
+
+  - *Using Docker...*
+
+    - Start it up: `docker-compose up -d`
+    - Create the database: `docker-compose run --rm web rake db:setup`
+
+  - *Not using Docker...*
+  
+    - Install gems: `bundle install`
+    - Create the database: `rake db:setup`
+    - Start the Rails server: `rails s`
+
+  - Visit http://localhost:3000/admin and verify you can login and see the
+    admin dashboard.
+
+### Interacting with Slack
+
+Depending on what you are doing you can get started without needing to interact
+with our Slack instance. However, if you do need it:
 
   - Join the Railslink-dev Slack team by requesting an invitation (we'll need
     your email) in the official #railslink-dev channel.
@@ -28,29 +47,12 @@ Official website of Ruby on Rails Link.
 
   - *Using Docker...*
 
-    - Start it up: `docker-compose up -d`
-
     - Test the Slack API: `docker-compose run --rm web rake slack:test:api`
-
-    - Create the database: `docker-compose run --rm web rake db:setup`
-
     - Sync Slack channels: `docker-compose run --rm web rake slack:sync:channels`
-
     - Optionally sync Slack users: `docker-compose run --rm web rake slack:sync:users`
 
   - *Not using Docker...*
   
-    - Install gems: `bundle install`
-
     - Test the Slack API: `rake slack:test:api`
-
-    - Create the database: `rake db:setup`
-
     - Sync Slack channels: `rake slack:sync:channels`
-
     - Optionally sync Slack users: `rake slack:sync:users`
-
-    - Start the Rails server: `rails s`
-
-  - Visit http://localhost:3000/admin and verify you can login and see the
-    admin dashboard.
