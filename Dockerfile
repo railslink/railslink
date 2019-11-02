@@ -3,6 +3,7 @@ FROM ruby:2.5.7-alpine
 ENV APP_DIR /usr/src/app
 
 RUN apk add --update --no-cache \
+  bash \
   build-base \
   less \
   libxml2-dev \
@@ -11,7 +12,8 @@ RUN apk add --update --no-cache \
   postgresql-client \
   postgresql-dev \
   tini \
-  tzdata
+  tzdata \
+  yarn
 
 WORKDIR $APP_DIR
 
