@@ -13,7 +13,7 @@ Official website of Ruby on Rails Link.
 ### Requirements
 
 - Ruby 2.5.7
-- PostgreSQL 11+
+- PostgreSQL 10+
 - Redis 4+
 
 ### Contributing
