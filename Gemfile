@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.5.7"
+ruby '2.5.7'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -11,8 +11,8 @@ gem 'rails', '~> 5.1.6.2'
 
 gem 'dotenv-rails', groups: [:development, :test]                  # load environment variables from `.env`. must load before other gems
 
-gem "omniauth", '= 1.8.1'                                          # omniauth is a flexible authentication system utilizing rack middleware
-gem "omniauth-slack", '= 2.3.0'                                    # the slack strategy for omniauth and supports the sign in with slack approval flow
+gem 'omniauth', '= 1.8.1'                                          # omniauth is a flexible authentication system utilizing rack middleware
+gem 'omniauth-slack', '= 2.3.0'                                    # the slack strategy for omniauth and supports the sign in with slack approval flow
 gem 'configatron'                                                  # add multi-environment yaml settings
 gem 'countries', '~> 2.1.4'                                        # all sorts of useful information about every country
 gem 'httparty', '~> 0.17.0'                                        # http requests for callbacks to Slack slash command API
@@ -31,7 +31,7 @@ gem 'rollbar', '~> 2.18.0'                                         # exception t
 gem 'sass-rails', '~> 5.0'                                         # ruby on rails stylesheet engine for sass
 gem 'slack-ruby-client', '~> 0.11'                                 # client for the slack web and real time messaging apis
 gem 'slim-rails'                                                   # slim templates generator for rails 3, 4 and 5
-gem "sprockets", "~> 3.7.2"                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
+gem 'sprockets', '~> 3.7.2'                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
 gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
 gem 'uglifier', '>= 1.3.0'                                         # compressor for javascript assets
 gem 'nokogiri', '~> 1.10.4'                                        # a HTML, XML, SAX, and Reader parser
@@ -50,6 +50,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'                                    # a debugging tool for ruby on rails applications
   gem 'listen', '>= 3.0.5', '< 3.2'                                # listens to file modifications and notifies you about the changes
   gem 'ffi', '~> 1.9.24'                                           # a foreign function interface ruby implementation
+  gem 'seed_dump', '~> 3.3.1'                                      # tasks to dump your data to db/seeds.rb
 end
 
 group :test do
