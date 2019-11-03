@@ -11,6 +11,8 @@ class SlackController < ApplicationController
       return
     end
 
+    SlackEvent::UnhandledJob.perform_later(slack_params.to_hash) if is_railslink_dev_heroku?
+
     case slack_params.fetch(:event, {})[:type]
     when "admins"
       SlackEvent::AdminsJob.perform_later(slack_params.to_hash)
