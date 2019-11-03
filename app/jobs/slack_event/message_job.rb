@@ -66,7 +66,7 @@ class SlackEvent::MessageJob < ApplicationJob
       Thanks!
 
       _– RBot and the Admins_
-    )
+    ).strip.gsub(/^ +/, '')
 
     client = Slack::Web::Client.new
     dm_channel = client.im_open(user: user_id).channel.id
