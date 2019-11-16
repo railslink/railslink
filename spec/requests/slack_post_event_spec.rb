@@ -114,39 +114,5 @@ RSpec.describe "Slack post event", type: :request do
         post "/slack/event", params: { slack: slack_params }
       end
     end
-
-    context "host is not railslink-dev.herokuapp.com" do
-      it "does not enqueue SlackEvent::UnhandledJob in addition to the normal job" do
-        slack_params = {
-          token: token,
-          event: {
-            type: "message",
-            user: "u123"
-          }
-        }.with_indifferent_access
-        expect(SlackEvent::UnhandledJob).not_to receive(:perform_later)
-        expect(SlackEvent::MessageJob).to receive(:perform_later).with(slack_params)
-        post "/slack/event",
-          params: { slack: slack_params },
-          headers: { "Host" => "not-railslink-dev.herokuapp.com" }
-      end
-    end
-
-    context "host is railslink-dev.herokuapp.com" do
-      it "enqueues SlackEvent::UnhandledJob in addition to the normal job" do
-        slack_params = {
-          token: token,
-          event: {
-            type: "message",
-            user: "u123"
-          }
-        }.with_indifferent_access
-        expect(SlackEvent::UnhandledJob).to receive(:perform_later).with(slack_params)
-        expect(SlackEvent::MessageJob).to receive(:perform_later).with(slack_params)
-        post "/slack/event",
-          params: { slack: slack_params },
-          headers: { "Host" => "railslink-dev.herokuapp.com" }
-      end
-    end
   end
 end
