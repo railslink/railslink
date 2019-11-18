@@ -34,7 +34,7 @@ gem 'slim-rails'                                                   # slim templa
 gem 'sprockets', '~> 3.7.2'                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
 gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
 gem 'uglifier', '>= 1.3.0'                                         # compressor for javascript assets
-gem 'nokogiri', '~> 1.10.4'                                        # a HTML, XML, SAX, and Reader parser
+gem 'nokogiri', '~> 1.10.5'                                        # a HTML, XML, SAX, and Reader parser
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'                                      # testing framework
@@ -60,4 +60,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # windows does not include zoneinfo files, so bundle the tzinfo-data gem
-
