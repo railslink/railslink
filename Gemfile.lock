@@ -138,7 +138,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.2)
     rack (2.0.6)
     rack-attack (5.2.0)
       rack
@@ -293,7 +293,7 @@ DEPENDENCIES
   pagy (~> 0.21.0)
   pg (>= 0.18, < 2.0)
   pry-rails
-  puma (~> 3.7)
+  puma (~> 3.12)
   rack-attack (~> 5.2.0)
   rails (~> 5.1.6.2)
   rails-assets-bulma!
