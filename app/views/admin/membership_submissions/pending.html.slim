@@ -21,12 +21,14 @@ section.section
           input.input[type="text" disabled value=@submission.location]
         .help
           = @submission.ip_address_location
-          
+          %br
+          = @submission.ip_address
+
       .field
         label.label Created At
         .control
           input.input[type="text" disabled value=@submission.created_at]
-    
+
     .column
       .field
         label.label Website
