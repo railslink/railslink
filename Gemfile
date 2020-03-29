@@ -21,7 +21,7 @@ gem 'marginalia', '~> 1.6.0'                                       # attach comm
 gem 'oj', '~> 3.9.2'                                               # fast json parser and object serializer
 gem 'pg', '>= 0.18', '< 2.0'                                       # use postgresql as the database
 gem 'pagy', '~> 0.21.0'                                            # pagination ruby gem
-gem 'puma', '~> 3.7'                                               # use puma as the app server
+gem 'puma', '~> 3.12'                                              # use puma as the app server
 gem 'rack-attack', '~> 5.2.0'                                      # rack middleware for blocking & throttling abusive requests
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css framework based on flexbox
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
@@ -34,7 +34,7 @@ gem 'slim-rails'                                                   # slim templa
 gem 'sprockets', '~> 3.7.2'                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
 gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
 gem 'uglifier', '>= 1.3.0'                                         # compressor for javascript assets
-gem 'nokogiri', '~> 1.10.4'                                        # a HTML, XML, SAX, and Reader parser
+gem 'nokogiri', '~> 1.10.8'                                        # a HTML, XML, SAX, and Reader parser
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'                                      # testing framework
@@ -60,4 +60,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # windows does not include zoneinfo files, so bundle the tzinfo-data gem
-
