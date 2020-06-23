@@ -21,7 +21,7 @@ gem 'marginalia', '~> 1.6.0'                                       # attach comm
 gem 'oj', '~> 3.9.2'                                               # fast json parser and object serializer
 gem 'pg', '>= 0.18', '< 2.0'                                       # use postgresql as the database
 gem 'pagy', '~> 0.21.0'                                            # pagination ruby gem
-gem 'puma', '~> 3.12'                                              # use puma as the app server
+gem 'puma', '~> 3.12.6'                                            # use puma as the app server
 gem 'rack-attack', '~> 5.2.0'                                      # rack middleware for blocking & throttling abusive requests
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css framework based on flexbox
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
