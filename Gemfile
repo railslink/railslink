@@ -7,7 +7,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.6.2'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'dotenv-rails', groups: [:development, :test]                  # load environment variables from `.env`. must load before other gems
 
