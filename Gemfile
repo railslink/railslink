@@ -7,7 +7,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.6.2'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'dotenv-rails', groups: [:development, :test]                  # load environment variables from `.env`. must load before other gems
 
@@ -16,7 +19,7 @@ gem 'omniauth-slack', '= 2.3.0'                                    # the slack s
 gem 'configatron'                                                  # add multi-environment yaml settings
 gem 'countries', '~> 2.1.4'                                        # all sorts of useful information about every country
 gem 'httparty', '~> 0.17.0'                                        # http requests for callbacks to Slack slash command API
-gem 'kramdown', '~> 2.1.0'                                         # markdown parser
+gem 'kramdown', '~> 2.3.0'                                         # markdown parser
 gem 'marginalia', '~> 1.6.0'                                       # attach comments to your activerecord queries
 gem 'oj', '~> 3.9.2'                                               # fast json parser and object serializer
 gem 'pg', '>= 0.18', '< 2.0'                                       # use postgresql as the database
