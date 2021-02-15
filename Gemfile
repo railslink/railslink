@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -37,7 +37,7 @@ gem 'slim-rails'                                                   # slim templa
 gem 'sprockets', '~> 3.7.2'                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
 gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
 gem 'uglifier', '>= 1.3.0'                                         # compressor for javascript assets
-gem 'nokogiri', '~> 1.10.8'                                        # a HTML, XML, SAX, and Reader parser
+gem 'nokogiri', '~> 1.11.1'                                        # a HTML, XML, SAX, and Reader parser
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'                                      # testing framework
