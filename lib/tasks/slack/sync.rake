@@ -10,7 +10,7 @@ namespace :slack do
       puts "Syncing slack channels..."
       begin
         client = Slack::Web::Client.new
-        client.channels_list do |response|
+        client.conversations_list do |response|
           response.channels.each do |channel|
             puts " - #{channel["name"]}"
             channel = SlackChannel.find_or_create_from_api_response(channel)

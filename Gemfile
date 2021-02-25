@@ -32,7 +32,7 @@ gem 'rails-assets-fontawesome', source: 'https://rails-assets.org' # iconic svg,
 gem 'redis', '~> 4.0.1'                                            # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
 gem 'rollbar', '~> 2.18.0'                                         # exception tracking for ruby
 gem 'sass-rails', '~> 5.0'                                         # ruby on rails stylesheet engine for sass
-gem 'slack-ruby-client', '~> 0.11'                                 # client for the slack web and real time messaging apis
+gem 'slack-ruby-client', '~> 0.16'                                 # client for the slack web and real time messaging apis
 gem 'slim-rails'                                                   # slim templates generator for rails 3, 4 and 5
 gem 'sprockets', '~> 3.7.2'                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
 gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
