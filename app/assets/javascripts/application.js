@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require chartjs
-//= require fontawesome/fontawesome-all
+//= require fontawesome/fontawesome/all
 //= require_tree .
 
 (function() {
