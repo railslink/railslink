@@ -1,0 +1,19 @@
+version: 2
+
+updates:
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    pull-request-branch-name:
+      separator: "-"
+    # reviewers:
+    #   - "railslink/core"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    pull-request-branch-name:
+      separator: "-"
+    # reviewers:
+    #   - "railslink/core"
