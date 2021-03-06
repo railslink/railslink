@@ -7,59 +7,59 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.2.4', '>= 5.2.4.5'
+gem 'rails', '~> 5.2.4'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 
 gem 'dotenv-rails', groups: [:development, :test]                  # load environment variables from `.env`. must load before other gems
 
-gem 'omniauth', '= 1.8.1'                                          # omniauth is a flexible authentication system utilizing rack middleware
-gem 'omniauth-slack', '= 2.3.0'                                    # the slack strategy for omniauth and supports the sign in with slack approval flow
+gem 'omniauth'                                                     # omniauth is a flexible authentication system utilizing rack middleware
+gem 'omniauth-slack'                                               # the slack strategy for omniauth and supports the sign in with slack approval flow
 gem 'configatron'                                                  # add multi-environment yaml settings
-gem 'countries', '~> 2.1.4'                                        # all sorts of useful information about every country
-gem 'httparty', '~> 0.17.0'                                        # http requests for callbacks to Slack slash command API
-gem 'kramdown', '~> 2.3.0'                                         # markdown parser
-gem 'marginalia', '~> 1.6.0'                                       # attach comments to your activerecord queries
-gem 'oj', '~> 3.9.2'                                               # fast json parser and object serializer
-gem 'pg', '>= 0.18', '< 2.0'                                       # use postgresql as the database
-gem 'pagy', '~> 0.21.0'                                            # pagination ruby gem
-gem 'puma', '~> 3.12.6'                                            # use puma as the app server
-gem 'rack-attack', '~> 5.2.0'                                      # rack middleware for blocking & throttling abusive requests
+gem 'countries'                                                    # all sorts of useful information about every country
+gem 'httparty'                                                     # http requests for callbacks to Slack slash command API
+gem 'kramdown'                                                     # markdown parser
+gem 'marginalia'                                                   # attach comments to your activerecord queries
+gem 'oj'                                                           # fast json parser and object serializer
+gem 'pg', '< 2.0'                                                  # use postgresql as the database
+gem 'pagy'                                                         # pagination ruby gem
+gem 'puma'                                                         # use puma as the app server
+gem 'rack-attack'                                                  # rack middleware for blocking & throttling abusive requests
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css framework based on flexbox
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
 gem 'rails-assets-fontawesome', source: 'https://rails-assets.org' # iconic svg, font, and css toolkit
-gem 'redis', '~> 4.0.1'                                            # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
-gem 'rollbar', '~> 2.18.0'                                         # exception tracking for ruby
-gem 'sass-rails', '~> 5.0'                                         # ruby on rails stylesheet engine for sass
-gem 'slack-ruby-client', '~> 0.16'                                 # client for the slack web and real time messaging apis
+gem 'redis'                                                        # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
+gem 'rollbar'                                                      # exception tracking for ruby
+gem 'sass-rails'                                                   # ruby on rails stylesheet engine for sass
+gem 'slack-ruby-client'                                            # client for the slack web and real time messaging apis
 gem 'slim-rails'                                                   # slim templates generator for rails 3, 4 and 5
-gem 'sprockets', '~> 3.7.2'                                        # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
-gem 'sucker_punch', '~> 2.0'                                       # asynchronous processing library
-gem 'uglifier', '>= 1.3.0'                                         # compressor for javascript assets
-gem 'nokogiri', '~> 1.11.1'                                        # a HTML, XML, SAX, and Reader parser
+gem 'sprockets'                                                    # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
+gem 'sucker_punch'                                                 # asynchronous processing library
+gem 'uglifier'                                                     # compressor for javascript assets
+gem 'nokogiri'                                                     # a HTML, XML, SAX, and Reader parser
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.7'                                      # testing framework
-  gem 'rspec_junit_formatter', '~> 0.3.0'                          # rSpec results that your continuous integration service can read
-  gem 'factory_bot_rails', '~> 4.8'                                # provides integration between factory_bot and rails
+  gem 'rspec-rails'                                                # testing framework
+  gem 'rspec_junit_formatter'                                      # rSpec results that your continuous integration service can read
+  gem 'factory_bot_rails'                                          # provides integration between factory_bot and rails
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]              # ruby debugger
   gem 'pry-rails'                                                  # use pry as your rails console
-  gem 'vcr', '~> 4.0'                                              # record test suite's http interactions and replay them during future test runs
-  gem 'webmock', '~> 3.5.1'                                        # allows stubbing http requests and setting expectations on http requests
+  gem 'vcr'                                                        # record test suite's http interactions and replay them during future test runs
+  gem 'webmock'                                                    # allows stubbing http requests and setting expectations on http requests
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'                                    # a debugging tool for ruby on rails applications
-  gem 'listen', '>= 3.0.5', '< 3.2'                                # listens to file modifications and notifies you about the changes
-  gem 'ffi', '~> 1.9.24'                                           # a foreign function interface ruby implementation
-  gem 'seed_dump', '~> 3.3.1'                                      # tasks to dump your data to db/seeds.rb
+  gem 'web-console'                                                # a debugging tool for ruby on rails applications
+  gem 'listen'                                                     # listens to file modifications and notifies you about the changes
+  gem 'ffi'                                                        # a foreign function interface ruby implementation
+  gem 'seed_dump'                                                  # tasks to dump your data to db/seeds.rb
 end
 
 group :test do
-  gem 'fakeredis', '~> 0.7.0'                                      # fake (in-memory) driver for redis-rb
-  gem 'shoulda', '~> 3.5'                                          # makes tests easy on the fingers and eyes
-  gem 'stub_env', '~> 1.0', '>= 1.0.4'                             # helper to stub ENV variables in Rspec tests
+  gem 'fakeredis'                                                  # fake (in-memory) driver for redis-rb
+  gem 'shoulda'                                                    # makes tests easy on the fingers and eyes
+  gem 'stub_env'                                                   # helper to stub ENV variables in Rspec tests
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # windows does not include zoneinfo files, so bundle the tzinfo-data gem
