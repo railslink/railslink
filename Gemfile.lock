@@ -293,48 +293,48 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootsnap (>= 1.1.0)
+  bootsnap
   byebug
   configatron
-  countries (~> 2.1.4)
+  countries
   dotenv-rails
-  factory_bot_rails (~> 4.8)
-  fakeredis (~> 0.7.0)
-  ffi (~> 1.9.24)
-  httparty (~> 0.17.0)
-  kramdown (~> 2.3.0)
-  listen (>= 3.0.5, < 3.2)
-  marginalia (~> 1.6.0)
-  nokogiri (~> 1.11.1)
-  oj (~> 3.9.2)
-  omniauth (= 1.8.1)
-  omniauth-slack (= 2.3.0)
-  pagy (~> 0.21.0)
-  pg (>= 0.18, < 2.0)
+  factory_bot_rails
+  fakeredis
+  ffi
+  httparty
+  kramdown
+  listen
+  marginalia
+  nokogiri
+  oj
+  omniauth
+  omniauth-slack
+  pagy
+  pg (< 2.0)
   pry-rails
-  puma (~> 3.12.6)
-  rack-attack (~> 5.2.0)
-  rails (~> 5.2.4, >= 5.2.4.5)
+  puma
+  rack-attack
+  rails (~> 5.2.4)
   rails-assets-bulma!
   rails-assets-chartjs!
   rails-assets-fontawesome!
-  redis (~> 4.0.1)
-  rollbar (~> 2.18.0)
-  rspec-rails (~> 3.7)
-  rspec_junit_formatter (~> 0.3.0)
-  sass-rails (~> 5.0)
-  seed_dump (~> 3.3.1)
-  shoulda (~> 3.5)
-  slack-ruby-client (~> 0.16)
+  redis
+  rollbar
+  rspec-rails
+  rspec_junit_formatter
+  sass-rails
+  seed_dump
+  shoulda
+  slack-ruby-client
   slim-rails
-  sprockets (~> 3.7.2)
-  stub_env (~> 1.0, >= 1.0.4)
-  sucker_punch (~> 2.0)
+  sprockets
+  stub_env
+  sucker_punch
   tzinfo-data
-  uglifier (>= 1.3.0)
-  vcr (~> 4.0)
-  web-console (>= 3.3.0)
-  webmock (~> 3.5.1)
+  uglifier
+  vcr
+  web-console
+  webmock
 
 RUBY VERSION
    ruby 2.5.7p206
