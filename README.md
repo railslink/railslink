@@ -12,7 +12,7 @@ Official website of Ruby on Rails Link.
 
 ### Requirements
 
-- Ruby 2.5.7
+- Ruby 2.7.2
 - PostgreSQL 10+
 - Redis 4+
 
@@ -24,7 +24,7 @@ Official website of Ruby on Rails Link.
     - Create the database: `docker-compose run --rm web rake db:setup`
 
   - *Not using Docker...*
-  
+
     - Install gems: `bundle install`
     - Create the database: `rake db:setup`
     - Start the Rails server: `rails s`
@@ -52,7 +52,7 @@ with our Slack instance. However, if you do need it:
     - Optionally sync Slack users: `docker-compose run --rm web rake slack:sync:users`
 
   - *Not using Docker...*
-  
+
     - Test the Slack API: `rake slack:test:api`
     - Sync Slack channels: `rake slack:sync:channels`
     - Optionally sync Slack users: `rake slack:sync:users`
