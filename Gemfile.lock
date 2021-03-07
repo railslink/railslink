@@ -174,7 +174,7 @@ GEM
       sprockets-rails (>= 2.0.0)
     rails-assets-bulma (0.6.2)
     rails-assets-chartjs (2.7.2)
-    rails-assets-fontawesome (5.0.9)
+    rails-assets-fontawesome (5.10.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
