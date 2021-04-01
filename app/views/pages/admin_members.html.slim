@@ -15,4 +15,4 @@ main.admin-members
                 h3.title
                   = member.name
                 = link_to "@#{member.username}", "slack://user?team=#{ENV["SLACK_TEAM"]}&id=#{member.uid}", class: "has-text-primary"
-
+                p = member.pronouns

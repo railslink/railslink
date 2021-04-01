@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190323212047) do
+ActiveRecord::Schema.define(version: 2021_03_23_080251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20190323212047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "last_message_at"
+    t.string "pronouns"
     t.index ["email"], name: "index_slack_users_on_email"
     t.index ["is_admin"], name: "index_slack_users_on_is_admin"
     t.index ["is_deleted"], name: "index_slack_users_on_is_deleted"
