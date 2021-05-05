@@ -3,6 +3,6 @@
   "private": true,
   "dependencies": {
     "stylelint": "^13.13.1",
-    "stylelint-config-standard": "^21.0.0"
+    "stylelint-config-standard": "^22.0.0"
   }
 }
