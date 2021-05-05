@@ -98,7 +98,7 @@ GEM
     jwt (2.2.2)
     kramdown (2.3.1)
       rexml
-    listen (3.4.1)
+    listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.1)
@@ -175,7 +175,7 @@ GEM
       railties (= 5.2.4.5)
       sprockets-rails (>= 2.0.0)
     rails-assets-bulma (0.6.2)
-    rails-assets-chartjs (2.7.2)
+    rails-assets-chartjs (2.8.0)
     rails-assets-fontawesome (5.10.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
