@@ -47,7 +47,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     bindex (0.5.0)
-    bootsnap (1.7.3)
+    bootsnap (1.7.5)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
