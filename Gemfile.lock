@@ -259,7 +259,7 @@ GEM
       sprockets (>= 3.0.0)
     stub_env (1.0.4)
       rspec (>= 2.0, < 4.0)
-    sucker_punch (2.1.1)
+    sucker_punch (3.0.1)
       concurrent-ruby (~> 1.0)
     temple (0.8.0)
     thor (1.1.0)
