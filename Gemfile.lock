@@ -86,7 +86,7 @@ GEM
     faraday-net_http_persistent (1.1.0)
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
-    ffi (1.9.25)
+    ffi (1.15.1)
     gli (2.20.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
