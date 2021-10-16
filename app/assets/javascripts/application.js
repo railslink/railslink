@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require chartjs
 //= require_tree .
 
 (function() {

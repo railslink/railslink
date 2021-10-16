@@ -17,21 +17,19 @@
     ctx = ele.getContext('2d');
     new Chart(ctx, { type: 'bar', data: data,
       options: {
-        legend: { display: false },
-        tooltips: { displayColors: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: { displayColors: false },
+        },
         scales: {
-          xAxes: [
-            {
-              gridLines: { display: false },
-              ticks: { fontSize: 9, fontColor: '#bbb' }
-            }
-          ],
-          yAxes: [
-            {
-              gridLines: { display: false },
-              ticks: { display: false }
-            }
-          ]
+          xAxis: {
+            grid: { display: false },
+            ticks: { fontSize: 9, fontColor: '#bbb' }
+          },
+          yAxis: {
+            grid: { display: false },
+            ticks: { drawTicks: true }
+          }
         }
       }
     });
