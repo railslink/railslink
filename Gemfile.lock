@@ -172,7 +172,6 @@ GEM
       railties (= 5.2.6)
       sprockets-rails (>= 2.0.0)
     rails-assets-chartjs (2.8.0)
-    rails-assets-fontawesome (5.10.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -308,7 +307,6 @@ DEPENDENCIES
   rack-attack
   rails (~> 5.2)
   rails-assets-chartjs!
-  rails-assets-fontawesome!
   redis
   rollbar
   rspec-rails
