@@ -2,6 +2,7 @@
   "name": "ruby_on_rails_link",
   "private": true,
   "dependencies": {
+    "bulma": "^0.9.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0"
   }
