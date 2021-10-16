@@ -26,7 +26,6 @@ gem 'pg', '< 2.0'                                                  # use postgre
 gem 'pagy'                                                         # pagination ruby gem
 gem 'puma'                                                         # use puma as the app server
 gem 'rack-attack'                                                  # rack middleware for blocking & throttling abusive requests
-gem 'rails-assets-bulma', source: 'https://rails-assets.org'       # modern css framework based on flexbox
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
 gem 'rails-assets-fontawesome', source: 'https://rails-assets.org' # iconic svg, font, and css toolkit
 gem 'redis'                                                        # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
