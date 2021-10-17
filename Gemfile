@@ -27,7 +27,6 @@ gem 'pagy'                                                         # pagination 
 gem 'puma'                                                         # use puma as the app server
 gem 'rack-attack'                                                  # rack middleware for blocking & throttling abusive requests
 gem 'rails-assets-chartjs', source: 'https://rails-assets.org'     # html5 charts using the canvas element
-gem 'rails-assets-fontawesome', source: 'https://rails-assets.org' # iconic svg, font, and css toolkit
 gem 'redis'                                                        # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
 gem 'rollbar'                                                      # exception tracking for ruby
 gem 'sass-rails'                                                   # ruby on rails stylesheet engine for sass
