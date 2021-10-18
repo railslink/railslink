@@ -2,7 +2,7 @@
 version: 2
 defaults: &defaults
   docker:
-    - image: circleci/ruby:2.5.7-node
+    - image: circleci/ruby:2.7.4-node
       environment:
         BUNDLE_JOBS: 3
         BUNDLE_RETRY: 3
