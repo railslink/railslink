@@ -4,7 +4,7 @@
 
 # Ruby on Rails Link
 
-http://www.rubyonrails.link
+http://rubyonrails.link
 
 Official website of Ruby on Rails Link.
 
