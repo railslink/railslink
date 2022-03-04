@@ -85,46 +85,8 @@ jobs:
       - store_test_results:
           path: test_results
 
-  security:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: Reinstall bundler gem
-          command: gem install bundler
-
-      - restore_cache:
-          keys:
-            - railslink-bundle-{{ checksum "Gemfile.lock" }}
-            - railslink-bundle-
-
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
-
-      - save_cache:
-          key: railslink-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - run:
-          name: Install bundler-audit
-          command: gem install bundler-audit
-      - run:
-          name: Run bundle-audit
-          command: bundle audit check --update --ignore CVE-2015-9284
-
 workflows:
   version: 2
   commit:
     jobs:
       - build
-  nightly:
-    jobs:
-      - security
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master
