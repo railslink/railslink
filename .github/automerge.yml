@@ -1,0 +1,21 @@
+name: Auto-merge
+
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - 'Lucky App CI'
+
+jobs:
+  auto_merge:
+    name: Auto-merge
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        name: Auto-merge
+        uses: ridedott/merge-me-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRESET: DEPENDABOT_MINOR
+          MERGE_METHOD: REBASE
