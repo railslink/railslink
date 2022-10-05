@@ -4,8 +4,10 @@ $family-sans-serif: "Cabin", -apple-system, blinkmacsystemfont, "Segoe UI", robo
 /* stylelint-enable */
 $notification-padding: 0.75rem 2.5rem 0.75rem 1.5rem;
 
-@import "//fonts.googleapis.com/css?family=Cabin";
-@import "//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css";
+/* stylelint-disable import-notation */
+@import url("//fonts.googleapis.com/css?family=Cabin");
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css");
+/* stylelint-enable */
 @import "bulma/bulma.sass";
 @import "bulma-overrides";
 
