@@ -1,10 +1,11 @@
-
 $primary: #dd2c33;
-$family-sans-serif: 'Cabin', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+/* stylelint-disable max-line-length */
+$family-sans-serif: "Cabin", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+/* stylelint-enable */
 $notification-padding: 0.75rem 2.5rem 0.75rem 1.5rem;
 
-@import url("//fonts.googleapis.com/css?family=Cabin");
-@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css");
+@import "//fonts.googleapis.com/css?family=Cabin";
+@import "//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css";
 @import "bulma/bulma.sass";
 @import "bulma-overrides";
 
@@ -12,8 +13,8 @@ body.c-home {
   hr { margin: 0 15%; }
 }
 
-body.c-membership_submissions {
-  #new_slack_membership_submission {
+body.c-membership-submissions {
+  #new-slack-membership-submission {
     .field.fax {
       display: none;
     }
@@ -89,6 +90,8 @@ footer {
   margin-top: 1rem;
   padding-top: 1rem;
   color: $grey;
+  /* stylelint-disable scss/no-global-function-names */
   a { color: lighten($primary, 20%); }
+  /* stylelint-enable */
   .copyright { font-size: $size-7; }
 }
