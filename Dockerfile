@@ -5,6 +5,7 @@ ENV APP_DIR /usr/src/app
 RUN apk add --update --no-cache \
   bash \
   build-base \
+  gcompat \
   less \
   libxml2-dev \
   libxslt-dev \
