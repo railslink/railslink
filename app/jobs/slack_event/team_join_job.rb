@@ -1,4 +1,4 @@
-# 
+#
 # {token: "tokean123",
 #  team_id: "team123",
 #  api_app_id: "app123",
@@ -95,7 +95,9 @@ class SlackEvent::TeamJoinJob < ApplicationJob
       3. Don't ask if you can ask a question; just ask.
       4. Don't ask the same question in multiple channels.
       5. Wrap code in backticks. <https://slack.zendesk.com/hc/en-us/article_attachments/204977928/backticks.png|Example here>.
-      6. See #1.
+      6. Unsolicited promotions and scams (e.g., Upwork) via direct message will not be tolerated and result in your membership being revoked.
+      7. If you need to contact a Slack admin, type `/admins`.
+      8. See #1.
 
       Be sure to browse all the public channels to see any topics and conversations that might be interesting to you.  We also have private channels for various interests and communities. Here's contact info if you want an invite to the following private channels:
       - #women-in-tech: <@UAS76M3HN>
