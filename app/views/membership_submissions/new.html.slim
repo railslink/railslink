@@ -81,7 +81,9 @@ section.section
         .field
           label.label How did you hear about this community?
           .control
-            input.input[type="text" value=@submission.how_hear]
+            input.input[type="text" required="true" value=@submission.how_hear]
+          .help * Required. We'd like to know how you heard about us.
+
 
     .columns
       .column
