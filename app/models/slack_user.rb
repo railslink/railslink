@@ -38,6 +38,12 @@ class SlackUser < ApplicationRecord
   scope :available, -> { extant.human }
   scope :active, -> { available.where.not(last_message_at: nil) }
   scope :sort_by_recent_activity, -> { order(last_message_at: :desc) }
+  scope :registered_today, -> { where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) }
+  scope :registered_last_week, -> { where(created_at: 1.week.ago.beginning_of_week..1.week.ago.end_of_week) }
+  scope :registered_last_month, -> { where(created_at: 1.month.ago.beginning_of_month..1.month.ago.end_of_month) }
+  scope :registered_last_year, -> { where(created_at: 1.year.ago.beginning_of_year..1.year.ago.end_of_year) }
+  scope :registered_before_last_year, -> { where("created_at < ?", 1.year.ago.beginning_of_year) }
+
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user = find_or_create_from_api_response(auth_hash.extra.user_info.user)

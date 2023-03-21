@@ -3,4 +3,12 @@ section.section
     .column
       h1.title Admin Dashboard
       .content
-        p Find me in app/views/admin/dashboard/index.html.slim
+        p
+          strong Users registered today:
+          span #{SlackUser.registered_today.count}
+        p
+          strong Users registered last week:
+          span #{SlackUser.registered_last_week.count}
+        p
+          strong Users registered last month:
+          span #{SlackUser.registered_last_month.count}
