@@ -51,6 +51,7 @@ group :development do
   gem 'listen'                                                     # listens to file modifications and notifies you about the changes
   gem 'ffi'                                                        # a foreign function interface ruby implementation
   gem 'seed_dump'                                                  # tasks to dump your data to db/seeds.rb
+  gem "annotate"                                                   # annotate models with schema and routes info
 end
 
 group :test do

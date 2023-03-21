@@ -81,7 +81,7 @@ section.section
         .field
           label.label How did you hear about this community?
           .control
-            input.input[type="text" required="true" value=@submission.how_hear]
+            = f.text_area :how_hear, required: true, rows: 2, class: "textarea"
           .help * Required. We'd like to know how you heard about us.
 
 

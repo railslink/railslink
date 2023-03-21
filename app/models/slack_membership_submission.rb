@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: slack_membership_submissions
+#
+#  id            :bigint           not null, primary key
+#  slack_user_id :bigint
+#  status        :integer          default("pending")
+#  first_name    :string
+#  last_name     :string
+#  email         :string
+#  location      :string
+#  introduction  :text
+#  how_hear      :text
+#  linkedin_url  :string
+#  github_url    :string
+#  website_url   :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  ip_address    :inet
+#
 class SlackMembershipSubmission < ApplicationRecord
 
   include Emailable
@@ -19,6 +39,7 @@ class SlackMembershipSubmission < ApplicationRecord
   validates :github_url, format: { with: %r{\Ahttps?://github.com/}, allow_blank: true }
   validates :linkedin_url, format: { with: %r{\Ahttps?://(www\.)?linkedin.com/in/}, allow_blank: true }
   validates :introduction, presence: true
+  validates :how_hear, presence: true
 
   scope :chronologically, -> { order(:created_at) }
 

@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: slack_users
+#
+#  id              :bigint           not null, primary key
+#  uid             :string
+#  email           :string
+#  username        :string
+#  first_name      :string
+#  last_name       :string
+#  tz              :string
+#  tz_offset       :integer
+#  locale          :string
+#  is_deleted      :boolean
+#  is_admin        :boolean
+#  is_bot          :boolean
+#  data            :json
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  last_message_at :datetime
+#  pronouns        :string
+#
 require 'rails_helper'
 require 'models/concerns/uidable'
 require 'models/concerns/emailable'
