@@ -35,7 +35,8 @@ RSpec.describe "Membership submissions", type: :request do
             email: "john@doe.com",
             first_name: "John",
             last_name: "Doe",
-            introduction: "Once upon a time..."
+            introduction: "Once upon a time...",
+            how_hear: "The Google"
           }
         }
       end
