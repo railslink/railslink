@@ -3,8 +3,9 @@ FactoryBot.define do
     first_name { "John" }
     last_name { "Doe" }
     introduction { "Some intro here." }
+    how_hear { "The Google" }
     sequence(:email) { |n| "john#{n}@doe.com" }
-    
+
     factory :approved_slack_membership_submission do
       status { "approved" }
     end
