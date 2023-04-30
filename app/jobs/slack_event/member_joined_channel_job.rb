@@ -61,11 +61,13 @@ class SlackEvent::MemberJoinedChannelJob < ApplicationJob
   # Returns String (or nil)
   def text_for(channel)
     case channel.name
-    when "work-offers"
+    when "job-offers"
       <<~END_OF_TEXT
-        Welcome to our job posting channel. This channel is specifically for posting job offers or job-seeking information.
+        Welcome to our job posting channel. This channel is specifically for posting job offers.
 
-        For all other discussion of jobs, workplaces, career paths, etc. other than work opportunities, please use #work-career-chat.
+        If you are seeking work, please use #job-seekers.
+
+        For all other discussion of jobs, workplaces, career paths, etc. other than job opportunities, please use #job-chat.
 
         Your job offer should include the location, remote friendliness, company name, as well as instructions on how to apply.
 

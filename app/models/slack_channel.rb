@@ -18,7 +18,7 @@ class SlackChannel < ApplicationRecord
 
   include Uidable
 
-  DEFAULT_CHANNELS = %w[announcements coding frontend introductions random share work-offers]
+  DEFAULT_CHANNELS = %w[announcements coding frontend introductions random share job-offers]
 
   scope :available, -> { where(is_private: false, is_archived: false) }
   scope :popular, -> { order(members_count: :desc) }

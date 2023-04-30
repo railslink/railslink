@@ -69,9 +69,9 @@ RSpec.describe SlackEvent::MemberJoinedChannelJob, type: :job do
         end
       end
 
-      context "when channel is #work-offers" do
+      context "when channel is #job-offers" do
         before do
-          channel.update!(name: "work-offers")
+          channel.update!(name: "job-offers")
         end
 
         it "posts ephmerally to user" do
