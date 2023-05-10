@@ -70,7 +70,7 @@ class SlackEvent::TeamJoinJob < ApplicationJob
 
   def welcome_user_to_team(user:)
     client = Slack::Web::Client.new
-    dm_channel = client.im_open(user: user[:id]).channel.id
+    dm_channel = client.conversations_open(users: "U057798T5L2").channel.id
     client.chat_postMessage(
       as_user: true,
       channel: dm_channel,
