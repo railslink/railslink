@@ -74,6 +74,10 @@ class SlackEvent::MemberJoinedChannelJob < ApplicationJob
         Be courteous and do not cross-post to other channels or post repeatedly for the same job offer. Do not pin your job post.
 
         Please use Slack threads to followup to keep the main channel's signal to noise ratio high.
+
+        NOTE: To help keep this channel on topic for the community, we're asking that the job postings be related in some way to ruby or ruby on rails development (this include frontend work as well).  If we don't feel the job aligns with that heuristic we'll be taking down posts without warning.
+
+        Thank you!
       END_OF_TEXT
     end
   end
