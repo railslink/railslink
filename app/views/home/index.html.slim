@@ -35,7 +35,7 @@ section.section.has-text-centered
           .column.is-4.has-text-left
             .has-text-grey.is-size-4= channel.name_with_hash
             p 
-              = channel.purpose
+              = SlackChannelPresenter.new(channel).cleaned_purpose
               br
               span.has-text-primary #{number_with_delimiter channel.members_count}
               span.has-text-grey-light< members
