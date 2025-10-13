@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/railslink/railslink/badges/gpa.svg)](https://codeclimate.com/github/railslink/railslink)
+[![Maintainability](https://qlty.sh/gh/railslink/projects/railslink/maintainability.svg)](https://qlty.sh/gh/railslink/projects/railslink)
 [![Circle CI](https://circleci.com/gh/railslink/railslink.svg?style=shield)](https://circleci.com/gh/railslink/railslink)
 [![Coverage Status](https://coveralls.io/repos/railslink/railslink/badge.svg?branch=coverage&service=github)](https://coveralls.io/github/railslink/railslink?branch=coverage)
 
