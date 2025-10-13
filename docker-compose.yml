@@ -1,7 +1,6 @@
 version: "3.1"
 
 services:
-
   web:
     build:
       context: ./
@@ -20,6 +19,8 @@ services:
     depends_on:
       - db
       - redis
+    tty: true
+    stdin_open: true
 
   redis:
     image: redis:alpine
@@ -34,4 +35,4 @@ services:
 
 volumes:
   bundle: {}
-  pgdata: {} 
+  pgdata: {}
