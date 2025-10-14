@@ -10,7 +10,7 @@ defaults: &defaults
         PGHOST: 127.0.0.1
         PGUSER: railslink
         RAILS_ENV: test
-    - image: circleci/postgres:10.10-alpine
+    - image: cimg/postgres:14.19
       environment:
         POSTGRES_USER: railslink
         POSTGRES_DB: ruby_on_rails_link_test
