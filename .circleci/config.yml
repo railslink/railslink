@@ -2,7 +2,7 @@
 version: 2
 defaults: &defaults
   docker:
-    - image: circleci/ruby:2.7.4-node
+    - image: cimg/ruby:3.4.7-node
       environment:
         BUNDLE_JOBS: 3
         BUNDLE_RETRY: 3
@@ -22,10 +22,9 @@ jobs:
     steps:
       - checkout
 
-      # Reinstall bundler to fix circleci/ruby-2.4.4 wonkiness
       - run:
           name: Reinstall bundler gem
-          command: gem install bundler -v 2.4.22
+          command: gem install bundler
 
       # Restore bundle cache
       - restore_cache:

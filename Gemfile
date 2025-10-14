@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.7.4'
+ruby '3.4.7'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -35,6 +35,12 @@ gem 'sprockets'                                                    # sprockets i
 gem 'sucker_punch'                                                 # asynchronous processing library
 gem 'uglifier'                                                     # compressor for javascript assets
 gem 'nokogiri'                                                     # a HTML, XML, SAX, and Reader parser
+
+# ruby upgrade temporary fixes, until we also upgrade rails to 7
+gem 'concurrent-ruby', '1.3.4'
+gem 'mutex_m'
+gem 'benchmark'
+gem 'drb'
 
 group :development, :test do
   gem 'rspec-rails'                                                # testing framework

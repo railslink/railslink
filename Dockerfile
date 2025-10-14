@@ -1,4 +1,4 @@
-FROM ruby:2.7.4-alpine
+FROM ruby:3.4.7-alpine
 
 ENV APP_DIR /usr/src/app
 
