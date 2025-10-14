@@ -24,7 +24,7 @@ services:
     image: redis:alpine
 
   db:
-    image: postgres:11-alpine
+    image: postgres:14-alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: hunter2
