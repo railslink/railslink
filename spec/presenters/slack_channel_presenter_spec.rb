@@ -5,9 +5,11 @@ require 'rails_helper'
 RSpec.describe SlackChannelPresenter do
   subject { SlackChannelPresenter.new(channel) }
 
+  before { create(:slack_channel, name: "job-seekers", uid: "C123456") }
+
   describe '#cleaned_purpose' do
     context 'when purpose contains a Slack-style channel mention' do
-      let(:channel) { double('purpose' => 'See <#C123456|job-seekers> for openings') }
+      let(:channel) { create(:slack_channel, purpose: 'See <#C123456|> for openings') }
 
       it 'replaces Slack channel mention with readable text' do
         expect(subject.cleaned_purpose).to eq 'See #job-seekers for openings'
@@ -23,7 +25,7 @@ RSpec.describe SlackChannelPresenter do
     end
 
     context 'when purpose does not contain Slack markup' do
-      let(:channel) { double('purpose' => 'Talk about code') }
+      let(:channel) { create(:slack_channel, purpose: 'Talk about code') }
 
       it 'returns the original purpose' do
         expect(subject.cleaned_purpose).to eq 'Talk about code'
