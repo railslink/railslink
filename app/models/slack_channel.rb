@@ -25,7 +25,6 @@ class SlackChannel < ApplicationRecord
   scope :defaults, -> { where(name: DEFAULT_CHANNELS) }
 
   def self.find_or_create_from_api_response(data)
-    # debugger
     channel = find_by(uid: data.id) || new
     channel.update(
       uid: data.id,
