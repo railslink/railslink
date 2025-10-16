@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_080251) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_03_23_080251) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,8 +23,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_080251) do
     t.text "purpose"
     t.integer "members_count", default: 0
     t.json "data", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["is_general"], name: "index_slack_channels_on_is_general"
     t.index ["uid"], name: "index_slack_channels_on_uid"
   end
@@ -42,8 +41,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_080251) do
     t.string "linkedin_url"
     t.string "github_url"
     t.string "website_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.inet "ip_address"
     t.index ["email"], name: "index_slack_membership_submissions_on_email", unique: true
     t.index ["slack_user_id"], name: "index_slack_membership_submissions_on_slack_user_id"
@@ -63,9 +62,9 @@ ActiveRecord::Schema.define(version: 2021_03_23_080251) do
     t.boolean "is_admin"
     t.boolean "is_bot"
     t.json "data", default: {}
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "last_message_at"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "last_message_at", precision: nil
     t.string "pronouns"
     t.index ["email"], name: "index_slack_users_on_email"
     t.index ["is_admin"], name: "index_slack_users_on_is_admin"
