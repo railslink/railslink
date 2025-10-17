@@ -15,5 +15,5 @@ section.section
             tr[class = (channel.is_archived? ? "has-text-grey-light" : "")]
               td= channel.name_with_hash
               td.has-text-right= number_with_delimiter channel.members_count
-              td.has-text-right= channel.created_at.to_date.to_s(:db)
+              td.has-text-right= channel.created_at.to_date.to_s
               td= SlackChannelPresenter.new(channel).cleaned_purpose

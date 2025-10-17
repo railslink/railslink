@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -35,6 +35,7 @@ gem 'sprockets'                                                    # sprockets i
 gem 'sucker_punch'                                                 # asynchronous processing library
 gem 'uglifier'                                                     # compressor for javascript assets
 gem 'nokogiri'                                                     # a HTML, XML, SAX, and Reader parser
+gem 'tzinfo-data', platforms: [:windows, :jruby]                   # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 # ruby upgrade temporary fixes, until we also upgrade rails to 7
 gem 'concurrent-ruby', '1.3.4'
@@ -43,10 +44,10 @@ gem 'benchmark'
 gem 'drb'
 
 group :development, :test do
-  gem 'rspec-rails'                                                # testing framework
+  gem 'rspec-rails', '~> 7.0.0'                                    # testing framework
   gem 'rspec_junit_formatter'                                      # rSpec results that your continuous integration service can read
   gem 'factory_bot_rails'                                          # provides integration between factory_bot and rails
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]              # ruby debugger
+  gem 'byebug', platforms: [:windows]                              # ruby debugger
   gem 'pry-rails'                                                  # use pry as your rails console
   gem 'vcr'                                                        # record test suite's http interactions and replay them during future test runs
   gem 'webmock'                                                    # allows stubbing http requests and setting expectations on http requests
@@ -66,4 +67,3 @@ group :test do
   gem 'stub_env'                                                   # helper to stub ENV variables in Rspec tests
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # windows does not include zoneinfo files, so bundle the tzinfo-data gem

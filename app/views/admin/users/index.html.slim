@@ -19,7 +19,7 @@ section.section
               td= user.admin_checkmark
               td= user.first_name
               td= user.last_name
-              td= user.created_at.to_date.to_s(:db)
+              td= user.created_at.to_date.to_s
               td= user.email
               td= user.tz
               td= link_to "View", admin_user_path(user.id), class: "button"
