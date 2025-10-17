@@ -27,9 +27,6 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
   config.cache_store = :null_store
 
-  # Raise exceptions instead of rendering exception templates.
-  config.action_dispatch.show_exceptions = false
-
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 
@@ -54,4 +51,8 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  # CUSTOM CONFIGS
+  # Raise exceptions instead of rendering exception templates.
+  config.action_dispatch.show_exceptions = :none
 end
