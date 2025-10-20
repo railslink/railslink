@@ -14,6 +14,7 @@ RUN apk add --update --no-cache \
   postgresql-dev \
   tini \
   tzdata \
+  yaml-dev \
   yarn
 
 WORKDIR $APP_DIR
