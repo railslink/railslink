@@ -38,7 +38,7 @@ gem 'nokogiri'                                                     # a HTML, XML
 gem 'tzinfo-data', platforms: [:windows, :jruby]                   # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 # ruby upgrade temporary fixes, until we also upgrade rails to 7
-gem 'concurrent-ruby', '1.3.4'
+gem 'concurrent-ruby', '1.3.5'
 gem 'mutex_m'
 gem 'benchmark'
 gem 'drb'

@@ -85,7 +85,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.3.0)
     coderay (1.1.3)
-    concurrent-ruby (1.3.4)
+    concurrent-ruby (1.3.5)
     configatron (4.5.1)
     connection_pool (2.5.4)
     countries (8.0.4)
@@ -416,7 +416,7 @@ DEPENDENCIES
   benchmark
   bootsnap
   byebug
-  concurrent-ruby (= 1.3.4)
+  concurrent-ruby (= 1.3.5)
   configatron
   countries
   dotenv-rails
