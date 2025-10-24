@@ -10,7 +10,7 @@ $notification-padding: 0.75rem 2.5rem 0.75rem 1.5rem;
 @import url("//fonts.googleapis.com/css?family=Cabin");
 @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css");
 /* stylelint-enable */
-@import "bulma/bulma.sass";
+@import "bulma/sass";
 @import "bulma-overrides";
 
 body.c-home {
@@ -30,7 +30,7 @@ body.c-membership-submissions {
 body > nav {
   .navbar-brand {
     > .navbar-item > img#logo {
-      height: $navbar-height;
+      height: var(--bulma-navbar-height);
       display: inline-block;
       padding: 0 0.5em;
 
@@ -52,7 +52,7 @@ body > nav {
 
   &.navbar.is-light {
     a.navbar-burger {
-      color: $grey-dark;
+      color: var(--bulma-grey-dark);
 
       &:hover {
         color: $primary;
@@ -102,16 +102,16 @@ body > nav {
 }
 
 footer {
-  border-top: 1px solid $grey-lighter;
+  border-top: 1px solid var(--bulma-grey-lighter);
   margin-top: 1rem;
   padding-top: 1rem;
-  color: $grey;
+  color: var(--bulma-grey);
   /* stylelint-disable scss/no-global-function-names */
   a {
     color: lighten($primary, 20%);
   }
   /* stylelint-enable */
   .copyright {
-    font-size: $size-7;
+    font-size: var(--bulma-size-7);
   }
 }
