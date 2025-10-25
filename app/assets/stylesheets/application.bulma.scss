@@ -36,7 +36,9 @@
 // @import "bulma/sass/layout/hero.sass";
 // @import "bulma/sass/layout/section.sass";
 
+/* stylelint-disable max-line-length */
 $family-sans-serif: '"Cabin", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+/* stylelint-enable */
 
 @use "bulma/sass" with (
   $family-primary: $family-sans-serif,
