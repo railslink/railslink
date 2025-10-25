@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 7.2.0'
+gem 'rails', '~> 8.0.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -28,14 +28,14 @@ gem 'puma'                                                         # use puma as
 gem 'rack-attack'                                                  # rack middleware for blocking & throttling abusive requests
 gem 'redis'                                                        # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
 gem 'rollbar'                                                      # exception tracking for ruby
-gem 'sass-rails'                                                   # ruby on rails stylesheet engine for sass
 gem 'slack-ruby-client'                                            # client for the slack web and real time messaging apis
 gem 'slim-rails'                                                   # slim templates generator for rails 3, 4 and 5
-gem 'sprockets'                                                    # sprockets is a rack-based asset packaging system that concatenates and serves javascript, scss, etc
 gem 'sucker_punch'                                                 # asynchronous processing library
-gem 'uglifier'                                                     # compressor for javascript assets
 gem 'nokogiri'                                                     # a HTML, XML, SAX, and Reader parser
 gem 'tzinfo-data', platforms: [:windows, :jruby]                   # windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'jsbundling-rails'
+gem 'cssbundling-rails'
+gem 'propshaft'
 
 # ruby upgrade temporary fixes, until we also upgrade rails to 7
 gem 'concurrent-ruby', '1.3.5'

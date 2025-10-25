@@ -9,3 +9,6 @@
 .byebug_history
 .env.local
 .env.test.local
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

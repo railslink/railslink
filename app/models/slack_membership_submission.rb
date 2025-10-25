@@ -26,7 +26,7 @@ class SlackMembershipSubmission < ApplicationRecord
   attr_accessor :fax
   attr_reader :approval_error
 
-  enum status: [ :pending, :approved, :rejected, :ignored ]
+  enum :status, { pending: 0, approved: 1, rejected: 2, ignored: 3 }
 
   belongs_to :user, class_name: "SlackUser", 
     foreign_key: :slack_user_id,
