@@ -44,7 +44,7 @@ gem 'benchmark'
 gem 'drb'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 7.0.0'                                    # testing framework
+  gem 'rspec-rails', '~> 8.0.2'                                    # testing framework
   gem 'rspec_junit_formatter'                                      # rSpec results that your continuous integration service can read
   gem 'factory_bot_rails'                                          # provides integration between factory_bot and rails
   gem 'byebug', platforms: [:windows]                              # ruby debugger
