@@ -60,7 +60,7 @@ jobs:
 
       - run:
           name: Run Stylelint
-          command: ./node_modules/.bin/stylelint -f verbose app/assets/stylesheets
+          command: yarn lint
 
       - run:
           name: Wait for DB
