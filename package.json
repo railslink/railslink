@@ -15,6 +15,7 @@
   "scripts": {
     "build": "webpack --config ./config/webpack/webpack.config.js",
     "build:css": "sass ./app/assets/stylesheets/application.bulma.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "lint": "stylelint \"app/**/*.{css,scss,sass}\" --fix"
+    "lint": "stylelint \"app/**/*.{css,scss,sass}\" --fix",
+    "lint-ci": "stylelint -f verbose \"app/**/*.{css,scss,sass}\""
   }
 }

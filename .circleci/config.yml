@@ -60,7 +60,7 @@ jobs:
 
       - run:
           name: Run Stylelint
-          command: yarn lint
+          command: yarn lint-ci
 
       - run:
           name: Wait for DB
