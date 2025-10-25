@@ -36,11 +36,13 @@
 // @import "bulma/sass/layout/hero.sass";
 // @import "bulma/sass/layout/section.sass";
 
-$primary: #dd2c33;
-$family-sans-serif: '"Cabin", sans-serif';
-$notification-padding: 0.75rem 2.5rem 0.75rem 1.5rem;
+$family-sans-serif: '"Cabin", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
-@use "bulma/sass";
+@use "bulma/sass" with (
+  $family-primary: $family-sans-serif,
+  $primary: #dd2c33,
+  $notification-padding: 0.75rem 2.5rem 0.75rem 1.5rem
+);
 /* stylelint-disable import-notation */
 @import url("//fonts.googleapis.com/css?family=Cabin");
 @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css");
@@ -145,9 +147,9 @@ footer {
   padding-top: 1rem;
   color: var(--bulma-grey);
   /* stylelint-disable scss/no-global-function-names */
-  // a {
-  //   color: color.adjust(var(--bulma-primary), $lightness: 20%);
-  // }
+  a {
+    color: var(--bulma-primary-70);
+  }
   /* stylelint-enable */
   .copyright {
     font-size: var(--bulma-size-7);
