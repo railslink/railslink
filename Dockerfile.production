@@ -1,0 +1,33 @@
+# Production image for Kamal — gems + JS/CSS deps + precompiled assets are all
+# baked at BUILD time (self-contained). This is distinct from the repo's dev
+# `Dockerfile`, which installs gems at runtime via bin/docker-entrypoint.sh for
+# docker-compose. Rails 8.0 / Ruby 3.4.7, Puma, jsbundling (webpack) + cssbundling (sass).
+FROM ruby:3.4.7-alpine
+
+RUN apk add --update --no-cache \
+  bash build-base gcompat git less libxml2-dev libxslt-dev nodejs \
+  postgresql-client postgresql-dev tini tzdata yaml-dev yarn
+
+ENV APP_DIR=/usr/src/app \
+    RAILS_ENV=production \
+    BUNDLE_WITHOUT="development:test" \
+    RAILS_SERVE_STATIC_FILES=true \
+    RAILS_LOG_TO_STDOUT=true
+WORKDIR $APP_DIR
+
+# Gems (own layer so code changes don't bust the bundle cache)
+COPY Gemfile Gemfile.lock ./
+RUN bundle install --jobs 4 --retry 3 && rm -rf /usr/local/bundle/cache
+
+# JS/CSS deps (own layer)
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+# App code + asset precompile (SECRET_KEY_BASE_DUMMY lets Rails boot without a
+# real secret; no DB needed for precompile).
+COPY . ./
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+
+EXPOSE 3000
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

@@ -1,0 +1,84 @@
+# Kamal deploy for railslink (rubyonrails.link) — migrated off Heroku onto the
+# ops2 / SSD-Node fleet box (the "agpages box"), host-Caddy edge. Each app is an
+# independent Kamal container with proxy:false + a published port; a host Caddy
+# route (rubyonrails.link -> 127.0.0.1:9060) fronts it. Ports on this box:
+# intellecta 9020, minimalnarrow 9030, agpages 9040, platepose 9050, railslink 9060.
+service: railslink
+image: <%= ENV["KAMAL_REGISTRY_USERNAME"] || "nauman" %>/railslink
+
+# SSD-Node app ops run as the deploy user (root is provisioning-only).
+ssh:
+  user: <%= ENV["KAMAL_SSH_USER"] || "deploy" %>
+
+servers:
+  web:
+    hosts:
+      - <%= ENV["RAILSLINK_SERVER_HOST"] || "89.233.107.200" %>
+    proxy: false
+    options:
+      publish:
+        - "9060:3000"
+      # Use 127.0.0.1 (not localhost — that resolves to ::1, but Puma binds IPv4)
+      # and send X-Forwarded-Proto so the app's force_ssl doesn't 301-redirect the check.
+      health-cmd: "wget -q -O /dev/null --header='X-Forwarded-Proto: https' http://127.0.0.1:3000/ || exit 1"
+      health-interval: "10s"
+      health-timeout: "5s"
+      health-retries: "6"
+      health-start-period: "25s"
+
+registry:
+  server: <%= ENV["KAMAL_REGISTRY_SERVER"] || "ghcr.io" %>
+  username: <%= ENV["KAMAL_REGISTRY_USERNAME"] || "nauman" %>
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+  # Build natively on the amd64 box (avoids slow QEMU emulation on an arm64 Mac).
+  remote: ssh://deploy@<%= ENV["RAILSLINK_SERVER_HOST"] || "89.233.107.200" %>
+  dockerfile: Dockerfile.production
+
+env:
+  clear:
+    RAILS_ENV: production
+    RAILS_SERVE_STATIC_FILES: "true"
+    RAILS_LOG_TO_STDOUT: "true"
+    PORT: "3000"
+    RAILS_MAX_THREADS: "5"
+    # Action Cable adapter = redis, db 1 (config/cable.yml)
+    REDIS_URL: "redis://railslink-redis:6379/1"
+  secret:
+    - SECRET_KEY_BASE
+    - DATABASE_URL
+    - SLACK_API_TOKEN
+    - SLACK_SIGNIN_API_KEY
+    - SLACK_SIGNIN_API_SECRET
+    - SLACK_TEAM
+    - SLACK_VERIFICATION_TOKEN
+    - ROLLBAR_ACCESS_TOKEN
+
+# db:migrate on every deploy (the app's Heroku `release` phase does this).
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+accessories:
+  db:
+    image: postgres:16-alpine
+    host: <%= ENV["RAILSLINK_SERVER_HOST"] || "89.233.107.200" %>
+    port: "5438:5432"
+    env:
+      clear:
+        POSTGRES_DB: railslink_production
+        POSTGRES_USER: postgres
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    host: <%= ENV["RAILSLINK_SERVER_HOST"] || "89.233.107.200" %>
+    directories:
+      - data:/data
