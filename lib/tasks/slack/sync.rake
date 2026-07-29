@@ -29,10 +29,16 @@ namespace :slack do
     task users: [:environment] do
       puts "Syncing slack users..."
       failures = []
+      skipped = 0
       begin
         client = Slack::Web::Client.new
         client.users_list(include_locale: true) do |response|
           response.members.each do |member|
+            if unchanged_since_last_sync?(member)
+              skipped += 1
+              next
+            end
+
             puts " - #{member["name"]}"
             record = SlackUser.find_or_create_from_api_response(member)
             failures << report_failure(member["name"], record)
@@ -42,9 +48,24 @@ namespace :slack do
         raise(e) unless e.message =~ /execution expired/
         puts " - #{e.class}: #{e.message}"
       end
+      puts "Skipped #{skipped} unchanged users." if skipped.positive?
       abort_on_failures("users", failures.compact)
     end
   end
+end
+
+# Slack stamps each user payload with an `updated` epoch. Re-writing all ~38k
+# members on every run when almost none have changed is pure waste, so compare
+# against what we stored last time and skip the no-ops. A member we have never
+# seen, or one with no stamp, always syncs.
+def unchanged_since_last_sync?(member)
+  stamp = member["updated"]
+  return false if stamp.blank?
+
+  existing = SlackUser.find_by(uid: member["id"])
+  return false if existing.nil?
+
+  existing.data.is_a?(Hash) && existing.data["updated"] == stamp
 end
 
 # find_or_create_from_api_response returns the record whether or not it saved,

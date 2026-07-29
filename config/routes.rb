@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   # does DB counts + a full render (~8s cold) that overran the check timeout.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Readiness: "/up" proves the process is alive, this proves it can reach the
+  # database. The deploy proxy checks this one so traffic only arrives at a
+  # container that is genuinely warm.
+  get "readyz" => "readiness#show", as: :readiness_check
+
   root "home#index"
 
   namespace :slack do

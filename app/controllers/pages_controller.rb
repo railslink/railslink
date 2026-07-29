@@ -4,7 +4,13 @@ class PagesController < ApplicationController
   end
 
   def code_of_conduct
-    text = File.read(File.join(Rails.root, "CODE_OF_CONDUCT.md"))
-    @coc_html = Kramdown::Document.new(text).to_html
+    path = Rails.root.join("CODE_OF_CONDUCT.md")
+
+    # The file only changes on deploy, but keying on mtime means a changed file is
+    # picked up without waiting for a TTL. Re-parsing Kramdown per request was pure
+    # waste.
+    @coc_html = Rails.cache.fetch("pages/code_of_conduct/#{File.mtime(path).to_i}") do
+      Kramdown::Document.new(File.read(path)).to_html
+    end
   end
 end

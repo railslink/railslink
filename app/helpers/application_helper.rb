@@ -11,7 +11,11 @@ module ApplicationHelper
   end
 
   def link_to_open_slack
-    id = SlackChannel.where(is_general: true).first.uid
+    # Rendered in the layout on every non-home page; the general channel's uid
+    # effectively never changes.
+    id = Rails.cache.fetch("slack/general_channel_uid", expires_in: 12.hours) do
+      SlackChannel.where(is_general: true).first&.uid
+    end
     team = ENV["SLACK_TEAM"]
     link_to "Open Slack", "slack://channel?id=#{id}&team=#{team}", class: "navbar-item"
   end

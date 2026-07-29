@@ -64,7 +64,24 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  # Shared cache in the railslink-redis accessory. Falls back to the in-process
+  # memory store if REDIS_URL is unset so a container without Redis still boots.
+  # Errors are swallowed rather than raised: a cache outage should degrade to
+  # slow, not to a 500.
+  config.cache_store =
+    if ENV["REDIS_URL"].present?
+      [:redis_cache_store, {
+        url: ENV["REDIS_URL"],
+        connect_timeout: 1,
+        read_timeout: 1,
+        write_timeout: 1,
+        error_handler: ->(method:, returning:, exception:) {
+          Rollbar.warning(exception, cache_method: method)
+        }
+      }]
+    else
+      :memory_store
+    end
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque

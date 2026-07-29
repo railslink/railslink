@@ -1,5 +1,9 @@
 class SlackController < ApplicationController
   skip_before_action :verify_authenticity_token
+  # publish_event deliberately runs BEFORE verify_token! — unverified events are
+  # published to Redis on purpose so they can be examined later (see the specs and
+  # SlackEvent::UnhandledJob). Do not reorder these to save the Redis round trip on
+  # junk requests; the initializer's 1s timeouts bound that cost instead.
   before_action :publish_event
   before_action :verify_token!
 

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_03_23_080251) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_29_150000) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "slack_channels", force: :cascade do |t|
     t.string "uid"
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_03_23_080251) do
     t.inet "ip_address"
     t.index ["email"], name: "index_slack_membership_submissions_on_email", unique: true
     t.index ["slack_user_id"], name: "index_slack_membership_submissions_on_slack_user_id"
+    t.index ["status", "created_at"], name: "index_slack_membership_submissions_on_status_and_created_at"
     t.index ["status"], name: "index_slack_membership_submissions_on_status"
   end
 
@@ -66,11 +67,11 @@ ActiveRecord::Schema[7.0].define(version: 2021_03_23_080251) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "last_message_at", precision: nil
     t.string "pronouns"
+    t.index ["created_at"], name: "index_slack_users_on_created_at"
     t.index ["email"], name: "index_slack_users_on_email"
     t.index ["is_admin"], name: "index_slack_users_on_is_admin"
     t.index ["is_deleted"], name: "index_slack_users_on_is_deleted"
     t.index ["uid"], name: "index_slack_users_on_uid"
     t.index ["username"], name: "index_slack_users_on_username"
   end
-
 end

@@ -25,7 +25,10 @@ proxy:
     - www.rubyonrails.link
   app_port: 3000
   healthcheck:
-    path: /up
+    # "/readyz" (not "/up") — it runs one bounded SELECT 1, so the proxy only cuts
+    # over once the container can actually reach the database. "/up" touches
+    # nothing and marked containers healthy while Active Record was still cold.
+    path: /readyz
     interval: 5
 
 registry:

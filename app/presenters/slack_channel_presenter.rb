@@ -1,19 +1,24 @@
 # frozen_string_literal: true
 
 class SlackChannelPresenter < BasePresenter
+  # Slack writes channel references into a purpose as "<#C123|>". Resolve them all
+  # in one query instead of one per reference, and build a new string rather than
+  # gsub!-ing the model's own attribute in place — the old version mutated the
+  # loaded record, which showed up as spurious dirty tracking. `match` also only
+  # ever found the first reference; `scan` finds them all.
+  CHANNEL_REFERENCE = /<#(C\w+)\|>/
+
   def cleaned_purpose
     return "" if purpose.blank?
 
-    channel_ids = purpose.match(/<#(C\w+)\|>/)&.captures
-    return purpose if channel_ids.nil?
+    uids = purpose.scan(CHANNEL_REFERENCE).flatten.uniq
+    return purpose if uids.empty?
 
-    channel_ids.each do |channel_id|
-      channel = SlackChannel.find_by(uid: channel_id)
-      next unless channel
+    names = SlackChannel.where(uid: uids).pluck(:uid, :name).to_h
 
-      purpose.gsub!("<##{channel_id}|>", "##{channel.name}")
+    purpose.gsub(CHANNEL_REFERENCE) do |reference|
+      name = names[Regexp.last_match(1)]
+      name ? "##{name}" : reference
     end
-
-    purpose
   end
 end
