@@ -105,9 +105,10 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.  This may report out to Rollbar, which would be helpful
   config.active_support.report_deprecations = true
   
-  # Include generic and useful information about system operation, but avoid logging too much
-  # information to avoid inadvertent exposure of personally identifiable information (PII).
-  config.log_level = :debug
+  # NOTE: log_level is set once, above, from RAILS_LOG_LEVEL (default "info").
+  # An unconditional `config.log_level = :debug` used to sit here and silently
+  # override it, logging every SQL statement and render synchronously to stdout.
+  # Set RAILS_LOG_LEVEL=debug on the container when you actually need it.
 
   # Prevent health checks from clogging up the logs.
   config.silence_healthcheck_path = "/up"

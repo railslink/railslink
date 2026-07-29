@@ -1,0 +1,45 @@
+# Keep the build context small and the image reproducible. Modelled on the
+# .dockerignore Rails 8 generates. Note Dockerfile.production runs `yarn install`
+# BEFORE `COPY . ./`, so shipping a local node_modules would overwrite the
+# correctly-built linux/amd64 one with whatever the developer's Mac produced —
+# excluding it is a correctness fix, not just a size one.
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Dependencies installed inside the image
+/node_modules/
+/vendor/bundle/
+.bundle/
+
+# Generated locally; assets:precompile rebuilds these in the image
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/public/assets/
+
+# Runtime dirs
+/tmp/*
+!/tmp/.keep
+/log/*
+!/log/.keep
+/storage/*
+!/storage/.keep
+
+# Local environment / secrets — never wanted in an image layer
+.env
+.env.*
+/config/master.key
+/config/credentials/*.key
+/.kamal/secrets*
+
+# Tests and CI — not needed at runtime (BUNDLE_WITHOUT already drops their gems)
+/spec/
+/.github/
+
+# Editor / OS noise
+.DS_Store
+*.swp
+.idea/
+.vscode/
