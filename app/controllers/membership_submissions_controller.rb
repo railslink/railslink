@@ -17,6 +17,12 @@ class MembershipSubmissionsController < ApplicationController
 
     flash[:danger] = "There were problems with your submission. Please try again."
     render action: :new
+  rescue ActiveRecord::RecordNotUnique
+    # The email uniqueness validation can lose a race against the unique index,
+    # and a drifted primary-key sequence hands out an occupied id. Neither is
+    # worth a 500 that silently discards someone's application.
+    flash[:danger] = "There were problems with your submission. Please try again."
+    render action: :new
   end
 
   private
