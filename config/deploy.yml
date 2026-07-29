@@ -13,13 +13,16 @@ servers:
     hosts:
       - <%= ENV["RAILSLINK_SERVER_HOST"] || "190.102.110.171" %>
 
-# kamal-proxy: TLS + host routing. Production host is rubyonrails.link (migrated
-# off Heroku); kamal-proxy terminates TLS with an auto Let's Encrypt cert. Health
-# check hits "/up" (Rails' built-in health endpoint — no DB/render, unlike "/"
-# whose ~8s cold home page overran the check timeout).
+# kamal-proxy: TLS + host routing. Serves BOTH the apex and www (migrated off
+# Heroku); kamal-proxy terminates TLS with an auto Let's Encrypt cert per host.
+# Listing both here makes www durable — a deploy re-registers both, instead of
+# the CLI-added www route being dropped. Health check hits "/up" (Rails' built-in
+# health endpoint — no DB/render, unlike "/" whose ~8s cold home page overran it).
 proxy:
   ssl: true
-  host: <%= ENV["RAILSLINK_HOST"] || "rubyonrails.link" %>
+  hosts:
+    - <%= ENV["RAILSLINK_HOST"] || "rubyonrails.link" %>
+    - www.rubyonrails.link
   app_port: 3000
   healthcheck:
     path: /up
