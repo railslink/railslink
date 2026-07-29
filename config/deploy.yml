@@ -58,18 +58,10 @@ aliases:
   shell: app exec --interactive --reuse "bash"
   logs: app logs -f
 
+# Postgres is NOT a kamal accessory: Conductor provisions + owns a dedicated DB
+# container (railslink-db) outside kamal and injects the derived DATABASE_URL at
+# deploy (App#derived_database_url). Only redis stays a kamal-managed accessory.
 accessories:
-  db:
-    image: postgres:16-alpine
-    host: <%= ENV["RAILSLINK_SERVER_HOST"] || "190.102.110.171" %>
-    env:
-      clear:
-        POSTGRES_DB: railslink_production
-        POSTGRES_USER: postgres
-      secret:
-        - POSTGRES_PASSWORD
-    directories:
-      - data:/var/lib/postgresql/data
   redis:
     image: redis:7-alpine
     host: <%= ENV["RAILSLINK_SERVER_HOST"] || "190.102.110.171" %>
