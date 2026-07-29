@@ -15,14 +15,14 @@ servers:
 
 # kamal-proxy: TLS + host routing. Production host is rubyonrails.link (migrated
 # off Heroku); kamal-proxy terminates TLS with an auto Let's Encrypt cert. Health
-# check hits "/" (the app has no /up route; assume_ssl=true means bare HTTP
-# returns 200, so no redirect trips the check).
+# check hits "/up" (Rails' built-in health endpoint — no DB/render, unlike "/"
+# whose ~8s cold home page overran the check timeout).
 proxy:
   ssl: true
   host: <%= ENV["RAILSLINK_HOST"] || "rubyonrails.link" %>
   app_port: 3000
   healthcheck:
-    path: /
+    path: /up
     interval: 5
 
 registry:

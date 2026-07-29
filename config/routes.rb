@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # Lightweight health endpoint (Rails' built-in HealthController — no DB, no
+  # views). The deploy proxy healthchecks this instead of "/", whose home page
+  # does DB counts + a full render (~8s cold) that overran the check timeout.
+  get "up" => "rails/health#show", as: :rails_health_check
+
   root "home#index"
 
   namespace :slack do
