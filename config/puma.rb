@@ -33,6 +33,38 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 #
 # preload_app!
 
+# Warm the render path once the server is listening.
+#
+# "/readyz" proves the database is reachable, but the first request to "/" also
+# pays Slim template compilation and view warmup — measured at ~7.3s cold against
+# ~1.0-2.0s warm, with the DB connection already established. Only an actual render
+# clears that, so self-request "/" here and let the deploy absorb the cost instead
+# of the first real visitor.
+#
+# Runs in a background thread so boot is never blocked, and swallows everything:
+# a failed warmup should cost us a slow first page, never the process.
+on_booted do
+  next unless ENV.fetch("RAILS_ENV", "development") == "production"
+
+  Thread.new do
+    require "net/http"
+
+    # config.assume_ssl is on and host authorization is disabled, so a plain
+    # request to the loopback address renders rather than redirecting to https.
+    http = Net::HTTP.new("127.0.0.1", ENV.fetch("PORT", 3000).to_i)
+    http.open_timeout = 5
+    http.read_timeout = 60
+
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    response = http.get("/")
+    elapsed = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - started).round(2)
+
+    puts "[warmup] GET / -> #{response.code} in #{elapsed}s"
+  rescue StandardError => e
+    puts "[warmup] skipped: #{e.class}: #{e.message}"
+  end
+end
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
