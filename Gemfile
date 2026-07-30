@@ -24,7 +24,7 @@ gem 'marginalia'                                                   # attach comm
 gem 'oj'                                                           # fast json parser and object serializer
 gem 'pg', '< 2.0'                                                  # use postgresql as the database
 gem 'pagy'                                                         # pagination ruby gem
-gem 'puma'                                                         # use puma as the app server
+gem 'puma', '~> 7.2'                                               # use puma as the app server. pinned to 7.x: the CVE is fixed in 7.2.1, so there is no security reason to take the 8.x major
 gem 'rack-attack'                                                  # rack middleware for blocking & throttling abusive requests
 gem 'redis'                                                        # client that tries to match redis' api one-to-one, while still providing an idiomatic interface
 gem 'rollbar'                                                      # exception tracking for ruby
@@ -38,7 +38,10 @@ gem 'cssbundling-rails'
 gem 'propshaft'
 
 # ruby upgrade temporary fixes, until we also upgrade rails to 7
-gem 'concurrent-ruby', '1.3.5'
+# concurrent-ruby was hard-pinned to 1.3.5 for the Rails 6/7-era logger breakage.
+# We are on Rails 8 now, so the pin is stale — and it was holding back a security
+# fix that only lands in 1.3.7+.
+gem 'concurrent-ruby', '~> 1.3'
 gem 'mutex_m'
 gem 'benchmark'
 gem 'drb'
