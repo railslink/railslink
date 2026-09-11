@@ -3,9 +3,9 @@
 # terminates TLS (auto Let's Encrypt) and routes by host to the container. Simpler
 # than a host-Caddy hack. Accessories are internal-only (no published host ports).
 service: railslink
-# Image namespace is the pavelabs ORG, decoupled from the pushing user: the personal
-# namespace was public (DOCKERHUB-PUBLIC-001, 2026-09-11). Registry login stays the user.
-image: <%= ENV["KAMAL_IMAGE_NAMESPACE"] || "pavelabs" %>/railslink
+# This app's registry is ghcr.io, where the package lives under the login's own
+# namespace and is private. KAMAL_IMAGE_NAMESPACE only applies if it is ever set.
+image: <%= ENV["KAMAL_IMAGE_NAMESPACE"] || ENV["KAMAL_REGISTRY_USERNAME"] || "nauman" %>/railslink
 
 ssh:
   user: <%= ENV["KAMAL_SSH_USER"] || "deploy" %>
